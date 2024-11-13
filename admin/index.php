@@ -14,5 +14,6 @@ $id = $_GET["id"] ?? "";
 match ($act) {
     '' => (new ProductsController())->list(),
     'list-pro' => (new ProductsController())->list(),
+    'list-category' => (new CategoryController())->list(),
 }
     ?>

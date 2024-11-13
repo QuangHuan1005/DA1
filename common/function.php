@@ -13,4 +13,3 @@ function DB_connect()
         echo "Connection failed: " . $th->getMessage();
     }
 }
-?>

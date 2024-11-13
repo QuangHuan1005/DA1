@@ -10,10 +10,10 @@
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Quản Lý Sản Phẩm</a>
+                <a class="nav-link text-white" href="?act=list-pro">Quản Lý Sản Phẩm</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Quản Lý Danh Mục</a>
+                <a class="nav-link text-white" href="?act=list-category">Quản Lý Danh Mục</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#">Thống Kê</a>
