@@ -15,5 +15,6 @@ match ($act) {
     '' => (new ProductsController())->list(),
     'list-pro' => (new ProductsController())->list(),
     'list-category' => (new CategoryController())->list(),
+    'create-pro' => (new ProductsController())->createProduct(),
 }
     ?>

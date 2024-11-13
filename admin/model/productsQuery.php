@@ -25,15 +25,8 @@ class ProductsQuery
                 $product->price = $row['price'];
                 $product->color = $row['color'];
                 $product->stock_quantity = $row['stock_quantity'];
-                $product->created_at = $row['created_at'];
-                $product->updated_at = $row['updated_at'];
                 $product->image = $row['image'];
-                $product->battery = $row['battery'];
-                $product->brand = $row['brand'];
-                $product->screen_size = $row['screen_size'];
-                $product->model = $row['model'];
                 $product->storage_capacity = $row['storage_capacity'];
-                $product->processor = $row['processor'];
                 $danhsach[] = $product;
             }
             return $danhsach;

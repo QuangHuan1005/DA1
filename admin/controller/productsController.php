@@ -15,5 +15,9 @@ class ProductsController
         $all = $this->productsController->all();
         include 'view/products/list.php';
     }
+    public function createProduct()
+    {
+        include 'view/products/create.php';
+    }
 }
 ?>

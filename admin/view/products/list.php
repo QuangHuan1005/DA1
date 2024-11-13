@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
+<?php include "components/header.php" ?>
 
 <body>
     <div class="container-fluid">
@@ -21,7 +11,7 @@
                 <h1 class="mt-3">Quản lý Sản Phẩm</h1>
                 <div id="dashboard" class="section shadow-sm p-3 mb-5 bg-white rounded mt-5">
                     <div class="d-flex">
-                        <a class="btn btn-primary mb-2 mx-1 ms-auto" href="">Thêm mới</a>
+                        <a class="btn btn-primary mb-2 mx-1 ms-auto" href="?act=create-pro">Thêm mới</a>
                     </div>
                     <table class="table table-hover table-bordered">
                         <thead class="table-warning">
@@ -61,6 +51,57 @@
             </main>
         </div>
     </div>
+    <div class="modal fade show" id="modal-add" tabindex="-1" style="display: block; padding-right: 17px"
+        aria-modal="true" role="dialog">
+        <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-width: 800px">
+            <form class="modal-content" method="POST" enctype="multipart/form-data">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title">Thêm sản phẩm</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <label>Tên sản phẩm</label>
+                            <input type="text" name="name" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Mô tả</label>
+                            <input type="text" name="description" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Bộ nhớ</label>
+                            <div class="input-group">
+                                <input type="number" name="weight" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Màu sắc</label>
+                            <input type="text" name="size_width" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Số lượng</label>
+                            <input type="number" name="page" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Hình ảnh</label>
+                            <input type="file" name="pic" class="form-control" />
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Giá</label>
+                            <input type="number" name="price" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">
+                        Huỷ
+                    </button>
+                    <button name="action" value="add" class="btn btn-success">Thêm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </body>
 
 </html>
