@@ -9,12 +9,15 @@ require_once "controller/categoryController.php";
 require_once "controller/productsController.php";
 
 $act = $_GET["act"] ?? "";
-$id = $_GET["id"] ?? "";
+$id = $_GET["id"] ?? null;
 
 match ($act) {
-    '' => (new ProductsController())->list(),
+    '' => (new CategoryController())->list(),
     'list-pro' => (new ProductsController())->list(),
     'list-category' => (new CategoryController())->list(),
     'create-pro' => (new ProductsController())->createProduct(),
+    'create-category' =>(new CategoryController())->createCategory(),
+    'delete-category' => (new CategoryController())->delete($id),
+    'update-category' =>(new CategoryController()) ->updateCategory($id),
 }
     ?>
