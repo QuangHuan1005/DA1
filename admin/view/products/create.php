@@ -27,35 +27,31 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Tên sản phẩm</label>
-                                    <input type="text" name="name" class="form-control"
-                                        value="<?= $all->product_name ?>" />
+                                    <input type="text" name="name" class="form-control" />
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Mô tả</label>
-                                    <input type="text" name="description" class="form-control"
-                                        value="<?= $all->description ?>" />
+                                    <input type="text" name="description" class="form-control" />
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Bộ nhớ</label>
                                     <div class="input-group">
-                                        <input type="number" name="storage" class="form-control"
-                                            value="<?= $all->storage_capacity ?>" />
+                                        <input type="number" name="storage" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Màu sắc</label>
-                                    <input type="text" name="color" class="form-control" value="<?= $all->color ?>" />
+                                    <input type="text" name="color" class="form-control" />
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Số lượng</label>
-                                    <input type="number" name="quantity" class="form-control"
-                                        value="<?= $all->stock_quantity ?>" />
+                                    <input type="number" name="quantity" class="form-control" />
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Danh mục</label>
                                     <select class="form-control" name="category">
                                         <?php
-                                        foreach ($all_category as $key): ?>
+                                        foreach ($all as $key): ?>
                                             <option value="<?= $key->category_id ?>"><?= $key->category_name ?></option>
                                             <?php
                                         endforeach;
@@ -64,18 +60,17 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Hình ảnh</label>
-                                    <input type="file" name="file_image" class="form-control"
-                                        value="<?= $all->image ?>">
+                                    <input type="file" name="file_image" class="form-control">
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label class="m-2 fw-bold ">Giá</label>
-                                    <input type="number" name="price" class="form-control" value="<?= $all->price ?>" />
+                                    <input type="number" name="price" class="form-control" />
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <a href="?act=list-pro" class="btn btn-danger m-3">Hủy</a>
-                            <button type="submit" name="editPro" class="btn btn-success">Sửa</button>
+                            <button type="submit" name="addPro" class="btn btn-success">Thêm</button>
                         </div>
                     </form>
                 </div>
