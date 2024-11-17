@@ -54,7 +54,6 @@
                                             onclick="return confirm('Bạn có chắc muốn xóa không?') "><i
                                                 class="fa-solid fa-trash-can"></i></a>
                                     </td>
-
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
