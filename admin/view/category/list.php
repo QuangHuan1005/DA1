@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        .btn{
+        .btn {
             display: block;
             margin: 10px;
         }
@@ -19,7 +19,7 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <?php include "/laragon/www/DA1/admin/components/sidebar.php" ?>
+            <?php include "components/sidebar.php" ?>
             <!-- Main Content -->
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-body-tertiary vh-100">
@@ -34,24 +34,25 @@
                             <tr>
                                 <th style="width:200px" scope="col">Mã danh mục</th>
                                 <th style="width:800px" scope="col">Tên danh mục</th>
-                                <th style="width:800px" scope="col">Mô tả</th>
                                 <th style="width:74px" scope="col">Công cụ</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if (!empty($allCategories)){ ?>
-                                <?php foreach ($allCategories as $category){ ?>
+                            <?php if (!empty($allCategories)) { ?>
+                                <?php foreach ($allCategories as $category) { ?>
                                     <tr>
                                         <th scope="row"><?= $category->category_id ?></th>
                                         <td><?= $category->category_name ?></td>
-                                        <td><?= $category->description ?></td>
                                         <td class="tool">
-                                            <a href="?act=update-category&id=<?= $category->category_id ?>" class="btn btn-warning">Sửa</a>
-                                            <a href="?act=delete-category&id=<?= $category->category_id ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+                                            <a href="?act=update-category&id=<?= $category->category_id ?>"
+                                                class="btn btn-warning">Sửa</a>
+                                            <a href="?act=delete-category&id=<?= $category->category_id ?>"
+                                                class="btn btn-danger"
+                                                onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
                                         </td>
                                     </tr>
                                 <?php } ?>
-                            <?php }else{ ?>
+                            <?php } else { ?>
                                 <tr>
                                     <td colspan="3" class="text-center">Không có danh mục nào</td>
                                 </tr>

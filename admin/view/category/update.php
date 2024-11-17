@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -103,56 +104,61 @@
             main {
                 margin-left: 0;
             }
+
             form {
                 padding: 20px;
             }
         }
     </style>
 </head>
+
 <body>
-<div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-            <?php include "/laragon/www/DA1/admin/components/sidebar.php" ?>
+            <?php include "components/sidebar.php" ?>
             <!-- Main Content -->
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 bg-body-tertiary vh-100">
                 <!-- Dashboard Section -->
                 <h3>Trang edit</h3>
 
-    <!-- 2. Form nhập liệu -->
-    <form action="" method="POST" enctype="multipart/form-data">
-        <!-- Khu vực nhập tên sách -->
-        <div style="margin-bottom: 16px;">
-            <span>Nhập tên  (*):</span><br>
-            <input type="text" name="category_name" value="<?= isset($cate) ?  $cate->category_name :''?>"><br>
-        </div>
+                <!-- 2. Form nhập liệu -->
+                <form action="" method="POST" enctype="multipart/form-data">
+                    <!-- Khu vực nhập tên sách -->
+                    <div style="margin-bottom: 16px;">
+                        <span>Nhập tên (*):</span><br>
+                        <input type="text" name="category_name"
+                            value="<?= isset($cate) ? $cate->category_name : '' ?>"><br>
+                    </div>
 
-        <!-- Khu vực nhập mo ta -->
-        <div style="margin-bottom: 16px;">
-            <span>Nhập mô tả (*):</span><br>
-            <input type="text" name="description" value="<?= isset($cate) ?  $cate->description:'' ?>"><br>
-        </div>
-        <!-- Khu vực button -->
-        <div style="margin-bottom: 16px;">
-            <a href="?act=list-category">Quay Lại</a>
-            <button class="btn btn-success" type="submit" name="submitForm" onclick="return confirm('Bạn có chắc là muốn thay đổi thông tin ko?')">Xác nhận</button>
-        </div>
+                    <!-- Khu vực nhập mo ta -->
+                    <div style="margin-bottom: 16px;">
+                        <span>Nhập mô tả (*):</span><br>
+                        <input type="text" name="description" value="<?= isset($cate) ? $cate->description : '' ?>"><br>
+                    </div>
+                    <!-- Khu vực button -->
+                    <div style="margin-bottom: 16px;">
+                        <a href="?act=list-category">Quay Lại</a>
+                        <button class="btn btn-success" type="submit" name="submitForm"
+                            onclick="return confirm('Bạn có chắc là muốn thay đổi thông tin ko?')">Xác nhận</button>
+                    </div>
 
 
-        <!-- Khu vực thông báo lỗi -->
-        <div style="color: red;">
-                    <?= isset($thongBaoLoi) ? $thongBaoLoi : ''; ?>
-                </div>
+                    <!-- Khu vực thông báo lỗi -->
+                    <div style="color: red;">
+                        <?= isset($thongBaoLoi) ? $thongBaoLoi : ''; ?>
+                    </div>
 
-                <!-- Khu vực thông báo thành công -->
-                <div style="color: green;">
-                    <?= isset($thongBaoThanhCong) ? $thongBaoThanhCong : ''; ?>
-                </div>
+                    <!-- Khu vực thông báo thành công -->
+                    <div style="color: green;">
+                        <?= isset($thongBaoThanhCong) ? $thongBaoThanhCong : ''; ?>
+                    </div>
 
-    </form>
-                
+                </form>
+
             </main>
         </div>
     </div>
 </body>
+
 </html>

@@ -45,76 +45,76 @@ class CategoryController
         $cate = new Category();
         $thongBaoLoi = ""; // Hiển thị lỗi khi có
         $thongBaoThanhCong = ""; // Hiển thị thành khi có
-       
 
-        if(isset($_POST["submitForm"])){
-            $cate->category_name=trim($_POST["category_name"]);
-            $cate->description=trim($_POST["description"]);
-        
-        //Validate form
-        if($cate->category_name==="" || $cate->description === ""){
-            $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
-        }
-        if ($thongBaoLoi === "" ) {
-            
-            $ketQua = $this->categoryQuery->insert($cate);
 
-            
-            if ($ketQua === "success") {
-                // Hiển thị thông báo thành công
-                $thongBaoThanhCong = "Tạo mới thành công. Mời bạn tiếp tục tạo mới hoặc quay lại danh sách.";
+        if (isset($_POST["submitForm"])) {
+            $cate->category_name = trim($_POST["category_name"]);
+            $cate->description = trim($_POST["description"]);
 
-                // Reset form
-                $cate = new Category();
+            //Validate form
+            if ($cate->category_name === "" || $cate->description === "") {
+                $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
+            }
+            if ($thongBaoLoi === "") {
 
-            } else {
-                // Hiển thị thông báo lỗi
-                $thongBaoLoi = "Tạo mới thất bại. Mời bạn kiểm tra lỗi và thực hiện lại.";
+                $ketQua = $this->categoryQuery->insert($cate);
+
+
+                if ($ketQua === "success") {
+                    // Hiển thị thông báo thành công
+                    $thongBaoThanhCong = "Tạo mới thành công. Mời bạn tiếp tục tạo mới hoặc quay lại danh sách.";
+
+                    // Reset form
+                    $cate = new Category();
+
+                } else {
+                    // Hiển thị thông báo lỗi
+                    $thongBaoLoi = "Tạo mới thất bại. Mời bạn kiểm tra lỗi và thực hiện lại.";
+
+                }
+
+
 
             }
-
-
-
         }
-    }
-    include "/laragon/www/DA1/admin/view/category/create.php";
+        include "view/category/create.php";
     }
     public function updateCategory($category_id)
     {
-        if($category_id !==""){
-            $cate=new Category();
+        if ($category_id !== "") {
+            $cate = new Category();
             $thongBaoLoi = ""; // Hiển thị lỗi khi có
             $thongBaoThanhCong = ""; // Hiển thị thành khi có
-            $cate=$this->categoryQuery->find($category_id);
+            $cate = $this->categoryQuery->find($category_id);
 
-            if(isset($_POST["submitForm"])){
-                $cate->category_name=trim($_POST["category_name"]);
-                $cate->description=trim($_POST["description"]);
-            
-            //Validate form
-            if($cate->category_name==="" || $cate->description === ""){
-                $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
-            }
-            if ($thongBaoLoi === "" ) {
-                
-                $ketQua = $this->categoryQuery->update($category_id,$cate);
-    
-                
-                if ($ketQua === "success") {
-                    // Hiển thị thông báo thành công
-                    $thongBaoThanhCong = "update thành công. Mời bạn tiếp tục  hoặc quay lại danh sách.";
-    
-                    // Reset form
-                    $cate = new Category();
-    
-                } else {
-                    // Hiển thị thông báo lỗi
-                    $thongBaoLoi = "Update thất bại. Mời bạn kiểm tra lỗi và thực hiện lại.";
-    
+            if (isset($_POST["submitForm"])) {
+                $cate->category_name = trim($_POST["category_name"]);
+                $cate->description = trim($_POST["description"]);
+
+                //Validate form
+                if ($cate->category_name === "" || $cate->description === "") {
+                    $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
                 }
+                if ($thongBaoLoi === "") {
+
+                    $ketQua = $this->categoryQuery->update($category_id, $cate);
+
+
+                    if ($ketQua === "success") {
+                        // Hiển thị thông báo thành công
+                        $thongBaoThanhCong = "update thành công. Mời bạn tiếp tục  hoặc quay lại danh sách.";
+
+                        // Reset form
+                        $cate = new Category();
+
+                    } else {
+                        // Hiển thị thông báo lỗi
+                        $thongBaoLoi = "Update thất bại. Mời bạn kiểm tra lỗi và thực hiện lại.";
+
+                    }
+                }
+            }
         }
-    }
-    }
-    include "/laragon/www/DA1/admin/view/category/update.php";
+        include "view/category/update.php";
     }
 }
