@@ -1,51 +1,54 @@
 <?php
-$products = [
-  ['image' => 'upload/iphone-15-pro-max.webp', 'name' => 'iPhone 15 Pro Max'],
-  ['image' => 'upload/iphone-15-pro-max.webp', 'name' => 'iPhone 13 Series'],
-  ['image' => 'upload/iphone-15-pro-max.webp', 'name' => 'iPhone 12 Series']
-];
+session_start();
+require "common/env.php";
+require "common/function.php";
+require "controller/homecontroller.php";
+require "model/accountQuery.php";
+require "model/account.php";
 
-$newsItems = [
-  ['image' => 'upload/news1.jpg', 'description' => 'Apple phát hành iOS mới'],
-  ['image' => 'upload/news2.jpg', 'description' => 'Khuyến mãi khi mua iPhone']
-];
-?>
-<?php
-include 'components/header.php';
-?>
-<header class="header">
-  <div class="banner">
-    <img src="upload/banner.png" alt="iPhone Promotion Banner">
-  </div>
-</header>
-<section class="product-showcase">
-  <h2>iPhone</h2>
-  <div class="product-grid">
-    <?php foreach ($products as $product): ?>
-      <div class="product">
-        <img src="<?= $product['image']; ?>" alt="<?= $product['name']; ?>">
-        <p><?= $product['name']; ?></p>
-        <button>Mua ngay</button>
-      </div>
-    <?php endforeach; ?>
-  </div>
-</section>
 
-<section class="promo-section">
-  <div class="promo-content">
-    <img src="upload/banner2.jpg" alt="">
-  </div>
-</section>
+// index.php
+$act = $_GET["act"] ?? "";
+$id = $_GET["id"] ?? "";
 
-<section class="news-section">
-  <h2>Tin tức</h2>
-  <div class="news-grid">
-    <?php foreach ($newsItems as $news): ?>
-      <div class="news-item">
-        <img src="<?= $news['image']; ?>" alt="<?= $news['description']; ?>">
-        <p><?= $news['description']; ?></p>
-      </div>
-    <?php endforeach; ?>
-  </div>
-</section>
-<?php include 'components/footer.php' ?>
+match ($act) {
+  "" => (new homeController())->home(),
+  "home" => (new homeController())->home(),
+  "login" => (new homeController())->login(),
+  "register" => (new homeController())->register(),
+  "logout" => (new homeController())->logout(),
+}
+
+  // switch ($act) {
+//   case 'login':
+//     (new HomeController())->login();
+//     break;
+//   case 'home':
+//     if (!isset($_SESSION['username'])) {
+//       header('Location: ?act=login');  // Chuyển hướng đến trang login nếu chưa đăng nhập
+//       exit;
+//     }
+//     (new HomeController())->home();
+//     break;
+//   case 'logout':
+//     (new HomeController())->logout();
+//     break;
+//   case 'register':
+
+  //     (new HomeController())->register();
+//     break;
+//   case 'admin-dashboard':
+//     // Kiểm tra quyền truy cập của admin trước khi cho phép vào trang quản trị
+//     if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+//       include "/admin/index.php";
+//     } else {
+//       header('Location: ?act=home');  // Chuyển hướng đến trang chu nếu không phải admin
+//     }
+//     break;
+
+  //   default:
+//     // Redirect to an error page or home if no matching action found
+//     header('Location: ?act=login');
+//     break;
+// }
+  ?>

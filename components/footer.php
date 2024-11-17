@@ -45,7 +45,3 @@
         <p>Đại diện pháp luật: PHẠM MẠNH HÒA | ĐT: 0247.305.9999 | Email: lienhe@shopdunk.com</p>
     </div>
 </footer>
-
-</body>
-
-</html>
