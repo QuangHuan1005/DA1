@@ -64,11 +64,7 @@ class CategoryController
                 } else {
                     // Hiển thị thông báo lỗi
                     $thongBaoLoi = "Tạo mới thất bại. Mời bạn kiểm tra lỗi và thực hiện lại.";
-
                 }
-
-
-
             }
         }
         include "view/category/create.php";
@@ -76,24 +72,18 @@ class CategoryController
     public function updateCategory($category_id)
     {
         if ($category_id !== "") {
-            $cate = new Category();
             $thongBaoLoi = ""; // Hiển thị lỗi khi có
             $thongBaoThanhCong = ""; // Hiển thị thành khi có
             $cate = $this->categoryQuery->find($category_id);
-
             if (isset($_POST["submitForm"])) {
                 $cate->category_name = trim($_POST["category_name"]);
                 $cate->description = trim($_POST["description"]);
-
                 //Validate form
                 if ($cate->category_name === "") {
                     $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
                 }
                 if ($thongBaoLoi === "") {
-
                     $ketQua = $this->categoryQuery->update($category_id, $cate);
-
-
                     if ($ketQua === "success") {
                         // Hiển thị thông báo thành công
                         $thongBaoThanhCong = "Update thành công.";

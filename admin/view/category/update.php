@@ -30,8 +30,7 @@
                                 <div class="form-group">
                                     <label class="m-2 fs-3 fw-bold">Tên danh mục</label>
                                     <input style="height:56px" class="fs-5 form-control" type="text"
-                                        name="category_name"
-                                        value="<?= isset($cate) ? $cate->category_name : '' ?>"><br>
+                                        name="category_name" value="<?= $cate->category_name ?>"><br>
                                 </div>
                             </div>
 
@@ -40,7 +39,7 @@
                                 <div class="form-group">
                                     <label class="m-2 fs-3 fw-bold">Mô tả</label>
                                     <input style="height:56px" class="fs-5 form-control" type="text" name="description"
-                                        value="<?= isset($cate) ? $cate->description : '' ?>"><br>
+                                        value="<?= $cate->description ?>"><br>
                                 </div>
                             </div>
                             <!-- Khu vực thông báo lỗi -->

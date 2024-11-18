@@ -38,7 +38,6 @@ class CategoryQuery
         // Khai báo try catch
         try {
             // 1. Viết câu lệnh sql
-            $sql = "DELETE FROM category WHERE `category`.`category_id` = $category_id";
             $sql = "UPDATE `category` SET `updated_at` = NOW(), `deleted_at` = NOW() WHERE `category`.`category_id` = $category_id;";
 
             // 2. Thực hiện truy vấn
