@@ -14,6 +14,8 @@ class ProductsQuery
     {
         try {
             $sql = "SELECT * FROM Product";
+            // xóa danh mục thì sẽ ẩn sản phẩm của danh mục đó
+            // $sql = "SELECT * FROM product JOIN category ON product.category_id = category.category_id WHERE category.deleted_at IS NULL;";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {

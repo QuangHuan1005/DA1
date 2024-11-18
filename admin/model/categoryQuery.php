@@ -5,7 +5,7 @@ class CategoryQuery
     public function __construct()
     {
         $this->pdo = DB_connect();
-        
+
     }
     public function __destruct()
     {
@@ -14,7 +14,7 @@ class CategoryQuery
     public function all()
     {
         try {
-            $sql = "SELECT * FROM category";
+            $sql = "SELECT * FROM category WHERE deleted_at IS NULL";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {
@@ -39,6 +39,7 @@ class CategoryQuery
         try {
             // 1. Viết câu lệnh sql
             $sql = "DELETE FROM category WHERE `category`.`category_id` = $category_id";
+            $sql = "UPDATE `category` SET `updated_at` = NOW(), `deleted_at` = NOW() WHERE `category`.`category_id` = $category_id;";
 
             // 2. Thực hiện truy vấn
             $data = $this->pdo->exec($sql);
@@ -70,7 +71,7 @@ class CategoryQuery
                 $cate->description = $data["description"];
                 $cate->created_at = $data["created_at"];
                 $cate->updated_at = $data["updated_at"];
-                
+
 
                 // 4. Return kết quả
                 return $cate;

@@ -20,7 +20,7 @@
                     <div class="modal-header bg-primary rounded-top">
                         <h1 class="modal-title p-3" style="color:white">Thêm sản phẩm</h1>
                     </div>
-                    <form id="form" class="modal-content p-3" method="POST" enctype="multipart/form-data">
+                    <form class="modal-content p-3" method="POST" enctype="multipart/form-data">
                         <div class="modal-body">
                             <?= $loi ?>
                             <?= $thanhcong ?>

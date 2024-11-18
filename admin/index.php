@@ -11,7 +11,7 @@ require_once "controller/productsController.php";
 $act = $_GET["act"] ?? "";
 $id = $_GET["id"] ?? "";
 match ($act) {
-    '' => (new CategoryController())->list(),
+    '' => (new ProductsController())->list(),
     'list-pro' => (new ProductsController())->list(),
     'list-category' => (new CategoryController())->list(),
     'create-pro' => (new ProductsController())->createProduct(),

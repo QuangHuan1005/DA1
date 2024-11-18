@@ -13,15 +13,9 @@ class CategoryController
     {
         // Lấy tất cả danh mục từ CategoryQuery
         $allCategories = $this->categoryQuery->all();
+        // Truyền dữ liệu vào view
+        include __DIR__ . '/../view/category/list.php';
 
-        // Kiểm tra nếu dữ liệu tồn tại
-        if ($allCategories) {
-            // Truyền dữ liệu vào view
-            include __DIR__ . '/../view/category/list.php';
-        } else {
-            // Nếu không có dữ liệu, hiển thị thông báo hoặc xử lý lỗi
-            echo "Không có danh mục nào.";
-        }
     }
     public function delete($category_id)
     {
@@ -52,7 +46,7 @@ class CategoryController
             $cate->description = trim($_POST["description"]);
 
             //Validate form
-            if ($cate->category_name === "" || $cate->description === "") {
+            if ($cate->category_name === "") {
                 $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
             }
             if ($thongBaoLoi === "") {
@@ -92,7 +86,7 @@ class CategoryController
                 $cate->description = trim($_POST["description"]);
 
                 //Validate form
-                if ($cate->category_name === "" || $cate->description === "") {
+                if ($cate->category_name === "") {
                     $thongBaoLoi = "Bạn phải nhập đầy đủ thông tin";
                 }
                 if ($thongBaoLoi === "") {
@@ -102,14 +96,14 @@ class CategoryController
 
                     if ($ketQua === "success") {
                         // Hiển thị thông báo thành công
-                        $thongBaoThanhCong = "update thành công. Mời bạn tiếp tục  hoặc quay lại danh sách.";
+                        $thongBaoThanhCong = "Update thành công.";
 
                         // Reset form
                         $cate = new Category();
 
                     } else {
                         // Hiển thị thông báo lỗi
-                        $thongBaoLoi = "Update thất bại. Mời bạn kiểm tra lỗi và thực hiện lại.";
+                        $thongBaoLoi = "Update thất bại.";
 
                     }
                 }
