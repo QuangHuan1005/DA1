@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "../common/env.php";
 require_once "../common/function.php";
 require_once "model/category.php";
@@ -20,5 +21,6 @@ match ($act) {
     'create-category' => (new CategoryController())->createCategory(),
     'delete-category' => (new CategoryController())->delete($id),
     'update-category' => (new CategoryController())->updateCategory($id),
+    default => (new ProductsController())->error()
 }
     ?>

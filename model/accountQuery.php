@@ -28,13 +28,14 @@ class loginquery
                 return 0;
             } else {
                 $accountf = new account();
-                $accountf->id = $data['Users_id']; // Không có khoảng trắng sau 'Users_id'
+                $accountf->Users_id = $data['Users_id']; // Không có khoảng trắng sau 'Users_id'
                 $accountf->username = $data['username'];
                 $accountf->email = $data['email'];
                 $accountf->password = $data['password'];
                 $accountf->role = $data['role'];
                 $accountf->created_at = $data['created_at'];
                 $accountf->update_at = $data['update_at'];
+                $accountf->image = $data['image'];
                 return $accountf;
             }
         } catch (Exception $e) {
@@ -46,7 +47,6 @@ class loginquery
     {
         try {
             $sql = "SELECT * FROM `users` WHERE `username` = :username";
-
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(':username', $username);
             $stmt->execute();

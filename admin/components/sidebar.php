@@ -5,8 +5,10 @@
             <img src="../upload/logo.png" alt="" />
         </h2>
         <div class="d-flex align-items-center p-3 border-bottom">
-            <img src="../upload/user.png" alt="Admin Avatar" class="rounded-circle me-2" width="40" height="40" />
-            <span>Admin Name</span>
+            <img src="../upload/<?= $_SESSION['image'] ?>" alt="Admin Avatar" class="rounded-circle me-2" width="40"
+                height="40" />
+            <span><?= $_SESSION['username'] ?></span>
+
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
@@ -26,6 +28,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#">Quản Lý Bình Luận</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="http://localhost:81/duan1/DA1">Trở Về Trang Chủ</a>
             </li>
         </ul>
     </div>

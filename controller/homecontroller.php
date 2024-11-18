@@ -15,6 +15,11 @@ class homecontroller
     {
         include "view/trangChu/trangChu.php";
     }
+    public function error()
+    {
+        include "view/404.php";
+
+    }
     public function login()
     {
         $kq = ""; // Khởi tạo thông báo
@@ -37,11 +42,12 @@ class homecontroller
                     $kq = "Mật khẩu hoặc tài khoản bị sai";
                 } else {
                     // Nếu đăng nhập thành công, lưu thông tin vào session
-                    $_SESSION['Users_id'] = $res->id;
+                    $_SESSION['Users_id'] = $res->Users_id;
                     $_SESSION['username'] = $res->username;
                     $_SESSION['email'] = $res->email;
                     $_SESSION['role'] = $res->role;
-                    if ($res->role == "admin") {
+                    $_SESSION['image'] = $res->image;
+                    if ($res->role === 'admin') {
                         header("Location:admin");
                     } else {
                         // Chuyển hướng đến trang home sau khi đăng nhập thành công

@@ -17,5 +17,7 @@ match ($act) {
   "login" => (new homeController())->login(),
   "register" => (new homeController())->register(),
   "logout" => (new homeController())->logout(),
+  default => (new homecontroller())->error(),
+
 }
   ?>

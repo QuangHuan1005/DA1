@@ -13,9 +13,16 @@ class ProductsController
     }
     public function list()
     {
-
+        if (!isset($_SESSION['role']) && $_SESSION['role'] !== "admin") {
+            header('Location:?act=page-not-found');
+            exit();
+        }
         $all = $this->productsController->all();
         include 'view/products/list.php';
+    }
+    public function error()
+    {
+        header('Location:http://localhost:81/duan1/DA1/?act=error');
     }
     public function createProduct()
     {
