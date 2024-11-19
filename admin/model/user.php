@@ -1,15 +1,13 @@
 <?php
-class account
+class User
 {
-    public $Users_id;
+    public $User_id;
     public $nameAccount;
     public $email;
     public $password;
     public $role;
-    public $created_at;
-    public $update_at;
     public $image;
     public $NameUser;
-
 }
+
 ?>

@@ -21,6 +21,7 @@ match ($act) {
     'create-category' => (new CategoryController())->createCategory(),
     'delete-category' => (new CategoryController())->delete($id),
     'update-category' => (new CategoryController())->updateCategory($id),
+    'list-users' => (new UserController())->listUsers(),
     default => (new ProductsController())->error()
 }
     ?>

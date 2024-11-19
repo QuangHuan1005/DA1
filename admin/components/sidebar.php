@@ -24,7 +24,7 @@
                 <a class="nav-link text-white" href="#">Quản Lý Đơn Hàng</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Quản Lý Người Dùng</a>
+                <a class="nav-link text-white" href="?act=list-users">Quản Lý Người Dùng</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="#">Quản Lý Bình Luận</a>

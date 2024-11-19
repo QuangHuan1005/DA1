@@ -27,23 +27,22 @@ class homecontroller
         // Kiểm tra nếu form được gửi
         if (isset($_POST['submit'])) {
             $input = new Account();
-            $input->username = trim($_POST['username']);
+            $input->nameAccount = trim($_POST['username']);
             $input->password = trim($_POST['password']);
 
             // Kiểm tra nếu người dùng chưa nhập đủ thông tin
-            if (empty($input->username) || empty($input->password)) {
+            if (empty($input->nameAccount) || empty($input->password)) {
                 $kq = "Vui lòng nhập đủ thông tin";
             } else {
                 // Kiểm tra đăng nhập
-                $res = $this->loginquery->checklogin($input->username, $input->password);
-
+                $res = $this->loginquery->checklogin($input->nameAccount, $input->password);
                 // Nếu đăng nhập thất bại
                 if ($res === 0) {
                     $kq = "Mật khẩu hoặc tài khoản bị sai";
                 } else {
                     // Nếu đăng nhập thành công, lưu thông tin vào session
                     $_SESSION['Users_id'] = $res->Users_id;
-                    $_SESSION['username'] = $res->username;
+                    $_SESSION['username'] = $res->nameAccount;
                     $_SESSION['email'] = $res->email;
                     $_SESSION['role'] = $res->role;
                     $_SESSION['image'] = $res->image;
@@ -75,12 +74,19 @@ class homecontroller
         $input = new account();
         if (isset($_POST['submit'])) {
             // Lấy dữ liệu từ form
-            $input->username = trim($_POST['username']);
+            $input->nameAccount = trim($_POST['username']);
             $input->email = trim($_POST['email']);
             $input->password = trim($_POST['password']);
+            $input->NameUser = trim($_POST['NameUser']);
             $confirm_password = trim($_POST['confirm_password']);
-            $data = $this->loginquery->checkAccount($input->username);
+            $data = $this->loginquery->checkAccount($input->nameAccount);
             // Kiểm tra xem mật khẩu và xác nhận mật khẩu có khớp không
+            if (isset($_FILES["image"]) && $_FILES["image"]["tmp_name"] !== "") {
+                $vi_tri_luu = "upload/" . $_FILES["image"]["name"];
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $vi_tri_luu)) {
+                    $input->image = "upload/" . $_FILES["image"]["name"];
+                }
+            }
             if ($data === 0) {
                 if ($input->password === $confirm_password) {
                     $result = $this->loginquery->createUser($input);
@@ -93,7 +99,7 @@ class homecontroller
                     $_SESSION['error'] = "Mật khẩu và xác nhận mật khẩu không khớp!";
                 }
             } else {
-                if ($input->username === $data->username) {
+                if ($input->nameAccount === $data->nameAccount) {
                     $_SESSION['error'] = "Tên tài khoản đã tồn tài";
                 }
             }

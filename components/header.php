@@ -13,7 +13,7 @@
         <a href="#"><i class="fas fa-search icon"></i></a>
         <?php
         if (isset($_SESSION['username'])) { ?>
-            <a href="?act=logout"><i class="fas fa-user icon"
+            <a href="?act=logout">2<i class="fas fa-user icon"
                     onclick="return confirm('Bạn có muốn đăng xuất không?')"></i></a>
             <?php
         }

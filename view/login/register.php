@@ -154,18 +154,24 @@
         <div class="img">
             <img src="upload/TND_M402_010 1.jpeg" alt="">
         </div>
-        <form method="POST" action="?act=register">
+        <form method="POST" enctype="multipart/form-data">
             <h1>Đăng Ký Tài Khoản</h1>
-            <label for="username">Tên đăng nhập:</label><br>
+            <label for="username">Tên đăng nhập</label><br>
             <input type="text" id="username" name="username" required><br><br>
 
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+            <label for="email">Họ và tên</label><br>
+            <input type="text" name="NameUser" required><br><br>
 
-            <label for="password">Mật khẩu:</label><br>
+            <label for="email">Email</label><br>
+            <input type="email" name="email" required><br><br>
+
+            <label for="email">Ảnh đại diện</label><br>
+            <input type="file" name="image" required><br><br>
+
+            <label for="password">Mật khẩu</label><br>
             <input type="password" id="password" name="password" required><br><br>
 
-            <label for="confirm_password">Xác nhận mật khẩu:</label><br>
+            <label for="confirm_password">Xác nhận mật khẩu</label><br>
             <input type="password" id="confirm_password" name="confirm_password" required><br><br>
 
             <?php

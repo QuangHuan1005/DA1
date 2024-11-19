@@ -146,7 +146,7 @@ include 'components/header.php';
 <body>
     <?php
     // Tránh lỗi "undefined variable" bằng cách kiểm tra trước khi sử dụng
-    $kq = $kq ?? ""; // Nếu chưa có giá trị thì khởi tạo $kq là một chuỗi rỗng
+    $kq ??= ""; // Nếu chưa có giá trị thì khởi tạo $kq là một chuỗi rỗng
     ?>
     <div class="box">
         <div class="img">

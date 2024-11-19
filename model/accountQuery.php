@@ -17,10 +17,9 @@ class loginquery
     public function checklogin($username, $password)
     {
         try {
-            $sql = "SELECT * FROM `users` WHERE `username` = :username AND `password` = :password";
-
+            $sql = "SELECT * FROM `users` WHERE `nameAccount` = :nameAccount AND `password` = :password";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':nameAccount', $username);
             $stmt->bindParam(':password', $password);
             $stmt->execute();
             $data = $stmt->fetch();
@@ -29,13 +28,14 @@ class loginquery
             } else {
                 $accountf = new account();
                 $accountf->Users_id = $data['Users_id']; // Không có khoảng trắng sau 'Users_id'
-                $accountf->username = $data['username'];
+                $accountf->nameAccount = $data['nameAccount'];
                 $accountf->email = $data['email'];
                 $accountf->password = $data['password'];
                 $accountf->role = $data['role'];
                 $accountf->created_at = $data['created_at'];
                 $accountf->update_at = $data['update_at'];
                 $accountf->image = $data['image'];
+                $accountf->NameUser = $data['NameUser'];
                 return $accountf;
             }
         } catch (Exception $e) {
@@ -46,9 +46,9 @@ class loginquery
     public function checkAccount($username)
     {
         try {
-            $sql = "SELECT * FROM `users` WHERE `username` = :username";
+            $sql = "SELECT * FROM `users` WHERE `nameAccount` = :nameAccount";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':nameAccount', $username);
             $stmt->execute();
             $data = $stmt->fetch();
             if ($data === false) {
@@ -56,7 +56,7 @@ class loginquery
             } else {
                 $accountf = new account();
                 $accountf->id = $data['Users_id']; // Không có khoảng trắng sau 'Users_id'
-                $accountf->username = $data['username'];
+                $accountf->username = $data['nameAccount'];
                 $accountf->email = $data['email'];
                 $accountf->password = $data['password'];
                 $accountf->role = $data['role'];
@@ -74,8 +74,8 @@ class loginquery
     {
         try {
             // Thêm người dùng mới vào cơ sở dữ liệu, với role mặc định là 'client'
-            $sql = "INSERT INTO `users` (`Users_id`,`username`, `email`, `password`, `role`, `created_at`, `update_at`) 
-                    VALUES (NULL,'$input->username', '$input->email', '$input->password', 'client', NOW(), NOW() )";
+            $sql = "INSERT INTO `users` (`Users_id`,`nameAccount`, `email`, `password`, `role`, `created_at`, `update_at`, `image`, `NameUser`) 
+                    VALUES (NULL,'$input->nameAccount', '$input->email', '$input->password', 'client', NOW(), NOW(), '$input->image', '$input->NameUser');";
             $data = $this->pdo->exec($sql);
 
             if ($data === 1) {
