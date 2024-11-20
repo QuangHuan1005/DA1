@@ -15,7 +15,7 @@ class ProductsController
     {
 
         $all = $this->productsController->all();
-        include 'view/products/list.php';
+        include 'view/trangChu/sanPham.php';
         
     }
     public function createProduct()
