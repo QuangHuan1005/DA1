@@ -44,7 +44,7 @@
                                     <td>
                                         <?= $key->price ?>
                                     </td>
-                                    <td class="text-center"><img src="../upload/<?= $key->image ?>" style="height:60px;">
+                                    <td class="text-center"><img src="<?= $key->image ?>" style="height:60px;">
                                     </td>
                                     <td><?= $key->stock_quantity ?></td>
                                     <td>

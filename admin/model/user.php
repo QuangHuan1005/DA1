@@ -8,6 +8,5 @@ class User
     public $role;
     public $image;
     public $NameUser;
+    public $lock_at;
 }
-
-?>

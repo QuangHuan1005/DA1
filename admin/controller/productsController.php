@@ -99,7 +99,6 @@ class ProductsController
                 }
 
             }
-            # code...
         }
         include 'view/products/update.php';
     }
