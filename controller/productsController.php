@@ -17,6 +17,7 @@ class ProductsController
         $all = $this->productsController->all();
         include 'view/trangChu/sanPham.php';
         
+        
     }
     public function createProduct()
     {
@@ -96,6 +97,16 @@ class ProductsController
             # code...
         }
         include 'view/products/update.php';
+    }
+    public function chiTiet($id){
+        if($id ==""){
+            echo "ko tim thay id ";
+        
+        }
+            $sp=$this -> productsController->findProduct($id);
+            $all = $this->productsController->all();
+        include 'view/trangChu/chiTietSP.php';
+        
     }
 }
 ?>

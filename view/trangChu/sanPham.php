@@ -144,6 +144,9 @@ img {
     margin-left: 10px;
     
 }
+.box a{
+    text-decoration: none;
+}
 .box p{
     color: blue;
     margin-left: 10px;
@@ -275,7 +278,7 @@ img {
         <?php foreach ($all as $key){  ?>
         <div class="box active" id="box1" >
             <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><img src="<?=$key->image ?>" width="240px" height="240px" alt=""></a>
             <h5><?= $key->product_name?></h5>
             <p><?= $key->price ?></p>
         </div>
@@ -288,7 +291,7 @@ img {
         <div class="box" id="box2">
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <h5><?= $key->product_name?></h5>
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
             <p><?= $key->price ?></p>
         </div>
         
@@ -300,7 +303,7 @@ img {
         <div class="box" id="box3">
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <h5><?= $key->product_name?></h5>
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
             <p><?= $key->price ?></p>
         </div>
         
@@ -312,7 +315,7 @@ img {
         <div class="box" id="box4">
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <h5><?= $key->product_name?></h5>
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
             <p><?= $key->price ?></p>
         </div>
         
@@ -324,7 +327,7 @@ img {
         <div class="box" id="box5">
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <h5><?= $key->product_name?></h5>
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
             <p><?= $key->price ?></p>
         </div>
         
@@ -336,7 +339,7 @@ img {
         <div class="box" id="box6">
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <h5><?= $key->product_name?></h5>
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
             <p><?= $key->price ?></p>
         </div>
         
@@ -348,7 +351,7 @@ img {
         <div class="box" id="box7">
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <h5><?= $key->product_name?></h5>
+            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
             <p><?= $key->price ?></p>
         </div>
         

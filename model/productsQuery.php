@@ -100,5 +100,6 @@ class ProductsQuery
             echo "Error: " . $th->getMessage();
         }
     }
+    
 }
 ?>
