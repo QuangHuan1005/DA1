@@ -22,11 +22,11 @@ class ReviewsController
         if(isset($_POST['add'])){
             $bl=new Reviews();
             $bl->product_id=$_POST['product_id'];
-            $bl->user_id=$_POST['user_id'];
+            $bl->user_id=$_POST['username'];
             $bl->rating=$_POST['rating'];
             $bl->comment=$_POST['comment'];
             $bl->review_date=$_POST['review_date'];
-            if($bl->rating=== "" || $bl->comment==="" || $bl->rating<=5 ||$bl->rating>0){
+            if($bl->rating=== "" || $bl->comment==="" || $bl->rating<=5 ||$bl->rating>0 || $bl->user_id===""){
                 $loi="sai thong tin hoac thieu thong tin";
             }
             if($loi===""){

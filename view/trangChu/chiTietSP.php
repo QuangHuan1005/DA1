@@ -248,6 +248,7 @@ body {
     margin-right: auto; /* Căn giữa theo chiều ngang */
     display: none;
     justify-content: center;
+    margin-left: 500px;
 }
 
 /* Định dạng cho bảng */
@@ -306,10 +307,11 @@ body {
     margin: 0;
     display: flex;
 }
-
-.menu2 ul li {
-    margin-right: 20px;
+.menu2{
+    width: 1200px;
+    
 }
+
 
 .menu2 ul li a {
     text-decoration: none;
@@ -596,6 +598,8 @@ body {
         <div class="new">
             <form action="" id="form" method="post" enctype="multipart/form-data">
         <h2>Đánh giá sản phẩm</h2>
+        <span>Tên người dùng</span>
+        <input type="text" name="username" class="form-control"><br>
         <span>ratting</span>
         <input type="text"  name="rating" class="form-control"><br>
         <span>comment</span>
