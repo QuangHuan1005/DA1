@@ -18,7 +18,7 @@ $act = $_GET["act"] ?? "";
 $id = $_GET["id"] ?? "";
 
 match ($act) {
-  "" =>(new ProductsController())->list(),
+  "" => (new homeController())->home(),
   "home" => (new homeController())->home(),
   "login" => (new homeController())->login(),
   "register" => (new homeController())->register(),
@@ -27,5 +27,7 @@ match ($act) {
   "chiTiet" => (new ProductsController())->chiTiet($id),
   "chiTiet" =>(new ReviewsController())->list(),
   "chiTiet" =>(new ReviewsController()) -> add(),
+  "phuKien" =>(new ProductsController()) ->pk(),
+  "mayCu" =>(new ProductsController()) ->old(),
 }
   ?>

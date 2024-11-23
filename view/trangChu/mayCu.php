@@ -135,7 +135,7 @@ img {
     align-items: center;
     background-color: white;
     margin: 10px;
-    display: none; /* Ẩn tất cả các box mặc định */
+    
     border-radius: 5px ;
     
 }
@@ -223,7 +223,7 @@ img {
    <?php include "/laragon/www/DA1/components/header.php"; ?>
    <div class="link">
             <a href="">Trang chủ</a>
-            <p>> Sản phẩm</p>
+            <p>> Máy Cũ</p>
             
         </div>
    <div class="big">
@@ -243,39 +243,11 @@ img {
         
     <!-- tong hop nd -->
 <div class="main">
-        <!-- slide show -->
-        <div class="slideshow-container">
-        <div class="mySlides fade">
-            <img src="/upload/1.jpg" width="800px" height="400px" alt="Slide 1">
-        </div>
-        <div class="mySlides fade">
-            <img src="/upload/2.jpg" width="800px" height="400px" alt="Slide 2">
-        </div>
-        <div class="mySlides fade">
-            <img src="/upload/3.jpg" width="800px" height="400px" alt="Slide 3">
-        </div>
-        <div class="mySlides fade">
-            <img src="/upload/4.jpg" width="800px" height="400px" alt="Slide 3">
-        </div>
-        <div class="mySlides fade">
-            <img src="/upload/5.jpg"  width="800px" height="400px" alt="Slide 3">
-        </div>
-    </div>
     <!-- menu sp -->
-    <div class="menu2">
-    <ul>
-        <li><a href="#" class="all" data-target="box1">Tất cả</a></li>
-        <li><a href="#" class="ip16" data-target="box2">Iphone 16 series</a></li>
-        <li><a href="#" class="ip15" data-target="box3">Iphone 15 series</a></li>
-        <li><a href="#" class="ip14" data-target="box4">Iphone 14 series</a></li>
-        <li><a href="#" class="ip13" data-target="box5">Iphone 13 series</a></li>
-        <li><a href="#" class="ip12" data-target="box6">Iphone 12 series</a></li>
-        <li><a href="#" class="ipSE" data-target="box7">Iphone SE</a></li>
-    </ul>
-    </div>
+    
     <div class="boxall">
         
-        <?php foreach ($all as $key){  ?>
+        <?php foreach ($all as $key){ if($key ->category_id == 16){ ?>
         <div class="box active" id="box1" >
             <!-- img o trong db : 	/upload/ip16.jpeg -->
             <a href="?act=chiTiet&id=<?=$key->product_id ?>"><img src="<?=$key->image ?>" width="240px" height="240px" alt=""></a>
@@ -283,81 +255,11 @@ img {
             <p><?= $key->price ?></p>
         </div>
         
-        <?php } ?>
-        
-
-        
-        <?php foreach ($all as $key){ if($key ->category_id == 9){  ?>
-        <div class="box" id="box2">
-            <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
-            <p><?= $key->price ?></p>
-        </div>
-        
         <?php }} ?>
         
 
         
-        <?php foreach ($all as $key){ if($key ->category_id == 10){  ?>
-        <div class="box" id="box3">
-            <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
-            <p><?= $key->price ?></p>
-        </div>
         
-        <?php }} ?>
-        
-
-       
-        <?php foreach ($all as $key){ if($key ->category_id == 11){  ?>
-        <div class="box" id="box4">
-            <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
-            <p><?= $key->price ?></p>
-        </div>
-        
-        <?php }} ?>
-        
-
-        
-        <?php foreach ($all as $key){ if($key ->category_id == 12){  ?>
-        <div class="box" id="box5">
-            <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
-            <p><?= $key->price ?></p>
-        </div>
-        
-        <?php }} ?>
-        
-
-        
-        <?php foreach ($all as $key){ if($key ->category_id == 13){  ?>
-        <div class="box" id="box6">
-            <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
-            <p><?= $key->price ?></p>
-        </div>
-        
-        <?php }} ?>
-        
-
-        
-        <?php foreach ($all as $key){ if($key ->category_id == 14){  ?>
-        <div class="box" id="box7">
-            <!-- img o trong db : 	/upload/ip16.jpeg -->
-            <img src="<?=$key->image ?>" width="240px" height="240px" alt="">
-            <a href="?act=chiTiet&id=<?=$key->product_id ?>"><h5><?= $key->product_name?></h5></a>
-            <p><?= $key->price ?></p>
-        </div>
-        
-        <?php }} ?>
-        
-
 
     </div>
     <!-- sp them -->

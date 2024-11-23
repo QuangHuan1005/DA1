@@ -19,6 +19,22 @@ class ProductsController
         
         
     }
+    public function pk()
+    {
+
+        $all = $this->productsController->pk();
+        include 'view/trangChu/phuKien.php';
+        
+        
+    }
+    public function old()
+    {
+
+        $all = $this->productsController->old();
+        include 'view/trangChu/mayCu.php';
+        
+        
+    }
     public function createProduct()
     {
         $all = $this->CategoryController->all();
