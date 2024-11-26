@@ -21,7 +21,7 @@
                 <a class="nav-link text-white" href="#">Thống Kê</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="#">Đơn Hàng</a>
+                <a class="nav-link text-white" href="?act=list-oders">Đơn Hàng</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="?act=list-users">Tài Khoản</a>
