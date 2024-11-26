@@ -12,31 +12,40 @@ class ReviewsController
     {
     }
     public function list(){
-        $all =$this->reviewscontroller->all();
+        $all_bl =$this->reviewscontroller->all();
+        
         include "/laragon/www/DA1/view/trangChu/chiTietSP.php";
+        
     }
     public function add(){
-        $all=$this->productsController->all();
+        
         $loi="";
         $thanhcong="";
         if(isset($_POST['add'])){
+            var_dump($_POST);
             $bl=new Reviews();
-            $bl->product_id=$_POST['product_id'];
-            $bl->user_id=$_POST['username'];
-            $bl->rating=$_POST['rating'];
-            $bl->comment=$_POST['comment'];
-            $bl->review_date=$_POST['review_date'];
-            if($bl->rating=== "" || $bl->comment==="" || $bl->rating<=5 ||$bl->rating>0 || $bl->user_id===""){
+            $bl->product_id=trim($_POST['product_id']);
+            $bl->user_id=trim($_POST['username']);
+            $bl->rating=trim($_POST['rating']);
+            $bl->comment=trim($_POST['comment']);
+            $bl->review_date=trim($_POST['review_date']);
+            $bl->username=trim($_POST['username']);
+            if($bl->rating=== "" || $bl->comment==="" || $bl->rating<=0 ||$bl->rating>5 || $bl->username==="" ){
                 $loi="sai thong tin hoac thieu thong tin";
             }
             if($loi===""){
                 $data=$this->reviewscontroller->add($bl);
+                
                 if($data ==="ok"){
-                    $bl=new Reviews();
+                    
                     $thanhcong="Đã đăng";
+                    $bl=new Reviews();
+                }else{
+                    $loi="da xay ra loi";
                 }
             }
         }
+        include "view/trangChu/chiTietSP.php";
     }
     
 }

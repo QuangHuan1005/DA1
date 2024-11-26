@@ -3,10 +3,12 @@ class ProductsController
 {
     public $productsController;
     public $CategoryController;
+    public $reviewscontroller;
     public function __construct()
     {
         $this->productsController = new ProductsQuery();
         $this->CategoryController = new CategoryQuery();
+        $this->reviewscontroller = new ReviewQuery();
     }
     public function __destruct()
     {
@@ -18,6 +20,20 @@ class ProductsController
         include 'view/trangChu/sanPham.php';
         
         
+    }
+    public function pk()
+    {
+
+        $all = $this->productsController->pk();
+        include 'view/trangChu/phuKien.php';
+        
+        
+    }
+    public function old()
+    {
+
+        $all = $this->productsController->old();
+        include 'view/trangChu/mayCu.php';
     }
     public function createProduct()
     {
@@ -98,15 +114,44 @@ class ProductsController
         }
         include 'view/products/update.php';
     }
-    public function chiTiet($id){
-        if($id ==""){
-            echo "ko tim thay id ";
-        
+    public function chiTiet($id)
+{
+    if ($id == "") {
+        echo "Không tìm thấy ID sản phẩm.";
+    } else {
+        $sp = $this->productsController->findProduct($id); // Lấy thông tin sản phẩm
+        $all = $this->productsController->all(); // Lấy tất cả sản phẩm
+        $all_bl = $this->reviewscontroller->all(); // Lấy danh sách đánh giá
+        $loi = "";
+        $thanhcong = "";
+
+        if (isset($_POST['add'])) { // Xử lý thêm bình luận
+            
+            $review = new Reviews();
+            $review->product_id = $id; // Gắn ID sản phẩm
+            $review->username = $_POST['username'];
+            $review->rating = $_POST['rating'];
+            $review->comment = $_POST['comment'];
+            
+            //lay userid tu session
+            $review->user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : NULL;
+            // Kiểm tra dữ liệu đầu vào
+            if ($review->username === "" || $review->rating === "" || $review->comment === "") {
+                $loi = '<div class="alert alert-danger" role="alert">Vui lòng điền đầy đủ thông tin!</div>';
+            } else {    
+                $result = $this->reviewscontroller->add($review); // Gọi phương thức add
+                if ($result === "ok") {
+                    $thanhcong = '<div class="alert alert-success" role="alert">Đánh giá thành công!</div>';
+                    header("Location: " . $_SERVER['PHP_SELF'] . "?act=chiTiet&id=" . $id); 
+                } else {
+                    $loi = '<div class="alert alert-danger" role="alert">Thêm đánh giá thất bại.</div>';
+                }
+            }
         }
-            $sp=$this -> productsController->findProduct($id);
-            $all = $this->productsController->all();
+
         include 'view/trangChu/chiTietSP.php';
-        
     }
+}
+
 }
 ?>

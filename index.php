@@ -11,7 +11,8 @@ require "controller/productsController.php";
 require "controller/categoryController.php";
 require "model/category.php";
 require "model/categoryQuery.php";
-
+require "model/review.php";
+require "model/reviewQuery.php";
 
 // index.php
 $act = $_GET["act"] ?? "";
@@ -25,7 +26,8 @@ match ($act) {
   "logout" => (new homeController())->logout(),
   "sanPham" =>(new ProductsController())->list(),
   "chiTiet" => (new ProductsController())->chiTiet($id),
-  "chiTiet" =>(new ReviewsController())->list(),
-  "chiTiet" =>(new ReviewsController()) -> add(),
+
+  "phuKien" =>(new ProductsController()) ->pk(),
+  "mayCu" =>(new ProductsController()) ->old(),
 }
   ?>

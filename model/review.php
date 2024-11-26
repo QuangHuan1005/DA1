@@ -5,6 +5,7 @@ class Reviews{
     public $user_id;
     public $rating;
     public $comment;
-    public $review_date; 
+    public $review_date;
+    public $username; 
 }
 ?>

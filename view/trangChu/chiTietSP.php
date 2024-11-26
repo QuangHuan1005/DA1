@@ -406,14 +406,49 @@ body {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    font-family: Arial, sans-serif; 
 }
 
-.show h1 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-    text-align: center;
+/* Tên người dùng */
+.show h3 {
+    font-size: 18px;
+    color: #007BFF; /* Màu xanh nổi bật */
+    margin: 10px 0 5px;
 }
+
+/* Đánh giá (rating) */
+.show p:first-of-type {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFD700; /* Màu vàng cho rating */
+    margin: 0 0 5px;
+}
+
+/* Bình luận (comment) */
+.show p:last-of-type {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin: 0 0 10px;
+}
+
+/* Khoảng cách giữa các bình luận */
+.show br {
+    margin: 15px 0;
+}
+
+/* Phần không có đánh giá */
+.show p {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+/* Hiệu ứng hover nếu cần */
+.show h3:hover {
+    text-decoration: underline;
+}
+
 
     </style>
 </head>
@@ -601,7 +636,7 @@ body {
         <span>Tên người dùng</span>
         <input type="text" name="username" class="form-control"><br>
         <span>ratting</span>
-        <input type="text"  name="rating" class="form-control"><br>
+        <input type="number" name="rating" class="form-control" min="1" max="5"><br>
         <span>comment</span>
         <input type="text" name="comment" class="form-control">
         <button type="submit" name="add" class="btn btn-info">Đăng</button>
@@ -611,7 +646,16 @@ body {
         </div>
         <div class="show">
         <h1>Đánh giá</h1>    
-        
+        <?php if (!empty($all_bl)) { ?>
+        <?php foreach($all_bl as $bl){ if($bl ->product_id == $sp->product_id){ ?>
+            <h3><?=$bl->username ?></h3>
+            <p ><?=$bl->rating ?>/5</p>
+            <p><?=$bl->comment ?></p>
+            <br>
+        <?php } }?>
+        <?php } else { ?>
+            <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+        <?php } ?>`
         </div>
     </div>
 </div>

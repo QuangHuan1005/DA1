@@ -24,6 +24,7 @@
                 $review->rating = $row['rating'];
                 $review->comment = $row['comment'];
                 $review->review_date = $row['review_date'];
+                $review->username = $row['username'];
                 $danhsach[] = $review;
             }
             return $danhsach;
@@ -34,8 +35,10 @@
     public function add(Reviews $review)
     {
         try{
-            $sql="INSERT INTO `reviews` (`reviews_id`, `product_id`, `user_id`, `rating`, `comment`, `review_date`) 
-            VALUES (NULL, '$review->product_id', '$review->user_id', '$review->rating', '$review->comment', NOW());";
+            //lay userid tu session v neu ko co thi gan null
+            $user_id = isset($_SESSION['Users_id']) ? $_SESSION['Users_id'] : NULL; 
+            $sql="INSERT INTO `reviews` (`reviews_id`, `product_id`, `user_id`, `rating`, `comment`, `review_date`, `username`) 
+            VALUES (NULL, '$review->product_id',  " . ($user_id !== NULL ? $user_id : 'NULL') . ", '$review->rating', '$review->comment', NOW(), '$review->username');";
             $data=$this->pdo->exec($sql);
             if($data === 1){
                 return "ok";
