@@ -273,8 +273,8 @@
     <?php include "components/header.php"; ?>
     <div class="container">
         <div class="link">
-            <a href="">Trang chủ</a>
-            <p> › Iphone</p>
+            <a href="">Trang chủ ›</a>
+            <p> Iphone</p>
         </div>
         <div class="big">
             <!-- tong hop nd -->
