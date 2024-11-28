@@ -3,23 +3,25 @@ session_start();
 require "common/env.php";
 require "common/function.php";
 require "controller/homecontroller.php";
+require "controller/productsController.php";
+require "controller/categoryController.php";
 require "model/accountQuery.php";
 require "model/account.php";
 require "model/products.php";
 require "model/productsQuery.php";
-require "controller/productsController.php";
-require "controller/categoryController.php";
 require "model/category.php";
 require "model/categoryQuery.php";
 require "model/review.php";
 require "model/reviewQuery.php";
+require "model/news.php";
+require "model/newsQuery.php";
 
 // index.php
 $act = $_GET["act"] ?? "";
 $id = $_GET["id"] ?? "";
 
 match ($act) {
-  "" => (new ProductsController())->list(),
+  "" => (new homecontroller())->home(),
   "home" => (new homeController())->home(),
   "login" => (new homeController())->login(),
   "register" => (new homeController())->register(),

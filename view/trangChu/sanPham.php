@@ -14,16 +14,12 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            width: 1920px;
-        }
-
         .title {
             text-align: center;
             font-size: 36px;
             font-weight: 700;
             line-height: 54px;
+            margin-bottom: 20px;
         }
 
         .slideshow-container {
@@ -122,39 +118,12 @@
             border-bottom: 2px solid #0066CC;
         }
 
-        .boxall {
-            width: 1200px;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
         .box {
-            width: 23%;
-            align-items: center;
-            background-color: white;
-            margin: 10px;
             display: none;
-            /* Ẩn tất cả các box mặc định */
-            border-radius: 5px;
-
-        }
-
-        .box h5 {
-            color: black;
-            margin-left: 10px;
-
         }
 
         .box a {
             text-decoration: none;
-        }
-
-        .box p {
-            color: blue;
-            margin-left: 10px;
-            font-size: 20px;
         }
 
         .box.active {
@@ -178,7 +147,7 @@
         }
 
         .linkContent {
-            margin: 10px 0px 10px 45px;
+            margin: 10px 0px 10px 15px;
 
         }
 
@@ -273,7 +242,7 @@
     <?php include "components/header.php"; ?>
     <div class="container">
         <div class="link">
-            <a href="">Trang chủ ›</a>
+            <a href="?act=">Trang chủ ›</a>
             <p> Iphone</p>
         </div>
         <div class="big">
@@ -311,95 +280,111 @@
                         <li><a href="#" class="ipSE" data-target="box7">iPhone 11 series</a></li>
                     </ul>
                 </div>
-                <div class="boxall">
-                    <?php foreach ($all as $key) { ?>
-                        <div class="box active" id="box1">
-                            <!-- img o trong db : 	/upload/ip16.jpeg -->
-                            <a href="?act=chiTiet&id=<?= $key->product_id ?>"><img src="<?= $key->image ?>" width="240px"
-                                    height="240px" alt=""></a>
-                            <h5><?= $key->product_name ?></h5>
-                            <p><?= $key->price ?></p>
-                        </div>
-
-                    <?php } ?>
-                    <?php foreach ($all as $key) {
-                        if ($key->category_id == 9) { ?>
-                            <div class="box" id="box2">
+                <div class="product-showcase">
+                    <div class="product-grid">
+                        <?php foreach ($all as $key) { ?>
+                            <div class="box1 box active">
                                 <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
-                                <a href="?act=chiTiet&id=<?= $key->product_id ?>">
-                                    <h5><?= $key->product_name ?></h5>
-                                </a>
-                                <p><?= $key->price ?></p>
+                                <div class="product">
+                                    <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                        <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                    </a>
+                                    <div class="product_name"><?= $key->product_name ?></div>
+                                    <div class="product_price"><?= $key->price ?></div>
+                                </div>
                             </div>
+                        <?php } ?>
+                        <?php foreach ($all as $key) {
+                            if ($key->category_id == 9) { ?>
+                                <div class="box2 box">
+                                    <!-- img o trong db : 	/upload/ip16.jpeg -->
+                                    <div class="product">
+                                        <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                            <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                        </a>
+                                        <div class="product_name"><?= $key->product_name ?></div>
+                                        <div class="product_price"><?= $key->price ?></div>
+                                    </div>
+                                </div>
 
-                        <?php }
-                    } ?>
-                    <?php foreach ($all as $key) {
-                        if ($key->category_id == 10) { ?>
-                            <div class="box" id="box3">
-                                <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
-                                <a href="?act=chiTiet&id=<?= $key->product_id ?>">
-                                    <h5><?= $key->product_name ?></h5>
-                                </a>
-                                <p><?= $key->price ?></p>
-                            </div>
+                            <?php }
+                        } ?>
+                        <?php foreach ($all as $key) {
+                            if ($key->category_id == 10) { ?>
+                                <div class="box3 box">
+                                    <!-- img o trong db : 	/upload/ip16.jpeg -->
+                                    <div class="product">
+                                        <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                            <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                        </a>
+                                        <div class="product_name"><?= $key->product_name ?></div>
+                                        <div class="product_price"><?= $key->price ?></div>
+                                    </div>
+                                </div>
 
-                        <?php }
-                    } ?>
-                    <?php foreach ($all as $key) {
-                        if ($key->category_id == 11) { ?>
-                            <div class="box" id="box4">
-                                <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
-                                <a href="?act=chiTiet&id=<?= $key->product_id ?>">
-                                    <h5><?= $key->product_name ?></h5>
-                                </a>
-                                <p><?= $key->price ?></p>
-                            </div>
+                            <?php }
+                        } ?>
+                        <?php foreach ($all as $key) {
+                            if ($key->category_id == 11) { ?>
+                                <div class="box4 box">
+                                    <!-- img o trong db : 	/upload/ip16.jpeg -->
+                                    <div class="product">
+                                        <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                            <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                        </a>
+                                        <div class="product_name"><?= $key->product_name ?></div>
+                                        <div class="product_price"><?= $key->price ?></div>
+                                    </div>
+                                </div>
 
-                        <?php }
-                    } ?>
-                    <?php foreach ($all as $key) {
-                        if ($key->category_id == 12) { ?>
-                            <div class="box" id="box5">
-                                <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
-                                <a href="?act=chiTiet&id=<?= $key->product_id ?>">
-                                    <h5><?= $key->product_name ?></h5>
-                                </a>
-                                <p><?= $key->price ?></p>
-                            </div>
+                            <?php }
+                        } ?>
+                        <?php foreach ($all as $key) {
+                            if ($key->category_id == 12) { ?>
+                                <div class="box5 box">
+                                    <!-- img o trong db : 	/upload/ip16.jpeg -->
+                                    <div class="product">
+                                        <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                            <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                        </a>
+                                        <div class="product_name"><?= $key->product_name ?></div>
+                                        <div class="product_price"><?= $key->price ?></div>
+                                    </div>
+                                </div>
 
-                        <?php }
-                    } ?>
-                    <?php foreach ($all as $key) {
-                        if ($key->category_id == 13) { ?>
-                            <div class="box" id="box6">
-                                <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
-                                <a href="?act=chiTiet&id=<?= $key->product_id ?>">
-                                    <h5><?= $key->product_name ?></h5>
-                                </a>
-                                <p><?= $key->price ?></p>
-                            </div>
+                            <?php }
+                        } ?>
+                        <?php foreach ($all as $key) {
+                            if ($key->category_id == 13) { ?>
+                                <div class="box6 box">
+                                    <!-- img o trong db : 	/upload/ip16.jpeg -->
+                                    <div class="product">
+                                        <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                            <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                        </a>
+                                        <div class="product_name"><?= $key->product_name ?></div>
+                                        <div class="product_price"><?= $key->price ?></div>
+                                    </div>
+                                </div>
 
-                        <?php }
-                    } ?>
-                    <?php foreach ($all as $key) {
-                        if ($key->category_id == 14) { ?>
-                            <div class="box" id="box7">
-                                <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
-                                <a href="?act=chiTiet&id=<?= $key->product_id ?>">
-                                    <h5><?= $key->product_name ?></h5>
-                                </a>
-                                <p><?= $key->price ?></p>
-                            </div>
+                            <?php }
+                        } ?>
+                        <?php foreach ($all as $key) {
+                            if ($key->category_id == 14) { ?>
+                                <div class="box7 box">
+                                    <!-- img o trong db : 	/upload/ip16.jpeg -->
+                                    <div class="product">
+                                        <a href="?act=chiTiet&id=<?= $key->product_id ?>">
+                                            <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
+                                        </a>
+                                        <div class="product_name"><?= $key->product_name ?></div>
+                                        <div class="product_price"><?= $key->price ?></div>
+                                    </div>
+                                </div>
 
-                        <?php }
-                    } ?>
+                            <?php }
+                        } ?>
+                    </div>
                 </div>
                 <!-- sp them -->
                 <div class="menu3">
@@ -549,7 +534,6 @@
 
     // Lấy tất cả các box sản phẩm
     const boxes = document.querySelectorAll('.box');
-
     // Lắng nghe sự kiện click vào các liên kết
     menuLinks.forEach(link => {
         link.addEventListener('click', function (event) {
@@ -557,15 +541,18 @@
 
             // Lấy ID của box mà người dùng chọn từ thuộc tính data-target
             const targetBox = this.getAttribute('data-target');
-
             // Ẩn tất cả các box
             boxes.forEach(box => {
                 box.classList.remove('active'); // Xóa class "active" để ẩn các box
             });
 
             // Hiển thị box tương ứng với mục tiêu người dùng chọn
-            const selectedBox = document.getElementById(targetBox);
-            selectedBox.classList.add('active'); // Thêm class "active" để hiển thị box
+            const selectedBox = document.getElementsByClassName(targetBox);
+            console.log(selectedBox);
+            const array = Array.from(selectedBox);
+            array.forEach(selected => {
+                selected.classList.add("active");
+            }) // Thêm class "active" để hiển thị box
         });
     });
 

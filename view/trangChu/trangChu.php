@@ -1,15 +1,3 @@
-<?php
-$products = [
-    ['image' => 'upload/iphone-15-pro-max.webp', 'name' => 'iPhone 15 Pro Max'],
-    ['image' => 'upload/iphone-15-pro-max.webp', 'name' => 'iPhone 13 Series'],
-    ['image' => 'upload/iphone-15-pro-max.webp', 'name' => 'iPhone 12 Series']
-];
-
-$newsItems = [
-    ['image' => 'upload/news1.jpg', 'description' => 'Apple phát hành iOS mới'],
-    ['image' => 'upload/news2.jpg', 'description' => 'Khuyến mãi khi mua iPhone']
-];
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,48 +6,122 @@ $newsItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPhone Promotion Page</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0 auto;
+            padding: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 595px;
+            overflow: hidden;
+        }
+
+        .mySlides {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateX(100%);
+            transition: transform 0.7s ease-in-out;
+        }
+
+        .mySlides.active {
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .mySlides.previous {
+            transform: translateX(-100%);
+            z-index: 1;
+        }
+
+        .slideshow-container img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 <?php
 include 'components/header.php';
 ?>
 <header class="header">
-    <div class="banner">
-        <img src="upload/banner.png" alt="iPhone Promotion Banner">
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="upload/bannerTrangchu.png" alt="Slide 1">
+        </div>
+        <div class="mySlides">
+            <img src="upload/bannerTrangchu1.png" alt="Slide 2">
+        </div>
+        <div class="mySlides">
+            <img src="upload/bannerTrangchu2.png" alt="Slide 3">
+        </div>
+        <div class="mySlides">
+            <img src="upload/bannerTrangchu3.png" alt="Slide 3">
+        </div>
+        <div class="mySlides">
+            <img src="upload/bannerTrangchu4.png" alt="Slide 3">
+        </div>
     </div>
 </header>
-<section class="product-showcase">
+<div class="product-showcase">
     <h2>iPhone</h2>
     <div class="product-grid">
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($list as $product): ?>
             <div class="product">
-                <img src="<?= $product['image']; ?>" alt="<?= $product['name']; ?>">
-                <p><?= $product['name']; ?></p>
-                <button>Mua ngay</button>
+                <img src="<?= $product->image ?>">
+                <div class="product_name"><?= $product->product_name; ?></div>
+                <div class="product_price"><?= number_format($product->price) . "₫" ?></div>
             </div>
         <?php endforeach; ?>
     </div>
-</section>
-<section class="promo-section">
+    <div class="btn_ip"><a href="?act=sanPham">Xem tất cả sản phẩm <i class="fa-solid fa-chevron-right"></i></a></div>
+</div>
+<div class="promo-section">
     <div class="promo-content">
-        <img src="upload/banner2.jpg" alt="">
+        <img src="upload/banner_bottom.jpeg" alt="">
     </div>
-</section>
-
-<section class="news-section">
+</div>
+<div class="news">
     <h2>Tin tức</h2>
     <div class="news-grid">
-        <?php foreach ($newsItems as $news): ?>
-            <div class="news-item">
-                <img src="<?= $news['image']; ?>" alt="<?= $news['description']; ?>">
-                <p><?= $news['description']; ?></p>
+        <?php foreach ($listNew as $new):
+            $date = strtotime($new->create_at) ?>
+            <div class="new">
+                <img src="<?= $new->thumbnail ?>">
+                <h3>
+                    <a class="new_title"><?= $new->title ?></a>
+                </h3>
+                <div class="new_date">
+                    <span><?= date('d-m-Y', $date); ?>
+                    </span>
+                </div>
             </div>
         <?php endforeach; ?>
     </div>
-</section>
+    <div class="btn_ip"><a href="">Xem tất cả tin tức <i class="fa-solid fa-chevron-right"></i></a></div>
+</div>
 <?php include 'components/footer.php' ?>
 </body>
 
 </html>
+<script>
+    let slideIndex = 0;
+
+    const showSlide = () => {
+        const slides = document.querySelectorAll(".mySlides");
+        slides.forEach((slide) => {
+            slide.classList.remove("active", "previous");
+        });
+        slides[slideIndex].classList.add("active");
+        const previousSlideIndex =
+            slideIndex === 0 ? slides.length - 1 : slideIndex - 1;
+        slides[previousSlideIndex].classList.add("previous");
+        slideIndex = (slideIndex + 1) % slides.length;
+        setTimeout(showSlide, 3000);
+    }
+    window.onload = showSlide;
+</script>

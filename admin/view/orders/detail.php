@@ -76,7 +76,8 @@
                                 ?>
                                 <div>
                                     <div class="row align-items-center">
-                                        <img class="col-auto" src="<?= $key['imageProduct'] ?>" alt="" style="width:110px">
+                                        <img class="col-auto" src="../<?= $key['imageProduct'] ?>" alt=""
+                                            style="width:110px">
                                         <p class="fs-5 col col-6"><?= $key['nameProduct'] ?></p>
                                         <div class="col col-4 text-end">
                                             <p class="fw-bold mb-1">
@@ -97,7 +98,8 @@
                             </div>
                             <div class=" form-group">
                                 <label class="fw-bold">Tổng tiền</label>
-                                <input type="text" name="id" value="<?= number_format($tong + $oneOrder->shipping_fee) ?>"
+                                <input type="text" name="id"
+                                    value="<?= number_format($tong + $oneOrder->shipping_fee) ?>"
                                     class="my-2 form-control" disabled="">
                             </div>
                         </div>

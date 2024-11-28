@@ -10,6 +10,7 @@ class Products
     public $color;
     public $stock_quantity;
     public $image;
+    public $create_at;
 
 }
 ?>

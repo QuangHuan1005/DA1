@@ -2,9 +2,13 @@
 class homecontroller
 {
     public $loginquery;
+    public $productQuery;
+    public $newQuery;
     public function __construct()
     {
         $this->loginquery = new loginquery();
+        $this->newQuery = new NewsQuery();
+        $this->productQuery = new ProductsQuery();
     }
 
     public function __destruct()
@@ -13,6 +17,8 @@ class homecontroller
     }
     public function home()
     {
+        $list = $this->productQuery->top4Pro();
+        $listNew = $this->newQuery->top3News();
         include "view/trangChu/trangChu.php";
     }
     public function error()

@@ -10,6 +10,55 @@ class ProductsQuery
     {
         $this->pdo = null;
     }
+    public function top4Pro()
+    {
+        try {
+            $sql = "SELECT * FROM product ORDER BY create_at DESC LIMIT 4";
+            $data = $this->pdo->query($sql)->fetchAll();
+            $danhsach = [];
+            foreach ($data as $row) {
+                $product = new Products();
+                $product->product_id = $row['product_id'];
+                $product->product_name = $row['product_name'];
+                $product->category_id = $row['category_id'];
+                $product->description = $row['description'];
+                $product->price = $row['price'];
+                $product->color = $row['color'];
+                $product->stock_quantity = $row['stock_quantity'];
+                $product->image = $row['image'];
+                $product->storage_capacity = $row['storage_capacity'];
+                $product->create_at = $row['create_at'];
+                $danhsach[] = $product;
+            }
+            return $danhsach;
+        } catch (Exception $th) {
+            echo "Error: " . $th->getMessage();
+        }
+    }
+    public function productRCM(Products $products)
+    {
+        try {
+            $sql = "SELECT * FROM `product` WHERE `product_id` != $products->product_id AND `storage_capacity` LIKE '$products->stock_quantity' LIMIT 4";
+            $data = $this->pdo->query($sql)->fetchAll();
+            $danhsach = [];
+            foreach ($data as $row) {
+                $product = new Products();
+                $product->product_id = $row['product_id'];
+                $product->product_name = $row['product_name'];
+                $product->category_id = $row['category_id'];
+                $product->description = $row['description'];
+                $product->price = $row['price'];
+                $product->color = $row['color'];
+                $product->stock_quantity = $row['stock_quantity'];
+                $product->image = $row['image'];
+                $product->storage_capacity = $row['storage_capacity'];
+                $danhsach[] = $product;
+            }
+            return $danhsach;
+        } catch (Exception $th) {
+            echo "Error: " . $th->getMessage();
+        }
+    }
     public function all()
     {
         try {
@@ -82,52 +131,6 @@ class ProductsQuery
             echo "Error: " . $th->getMessage();
         }
     }
-    public function createProduct(Products $product)
-    {
-        try {
-            $sql = "INSERT INTO `product` (`product_id`, `category_id`, `product_name`, `description`, `price`, `color`, `storage_capacity`, `stock_quantity`, `image`) 
-                                   VALUES (NULL, '$product->category_id', '$product->product_name', '$product->description', '$product->price', '$product->color', '$product->storage_capacity', '$product->stock_quantity', '$product->image');";
-            $data = $this->pdo->exec($sql);
-            if ($data === 1) {
-                return "ok";
-            }
-        } catch (Exception $th) {
-            echo "Error: " . $th->getMessage();
-        }
-    }
-    public function deleteProduct($id)
-    {
-        try {
-            $sql = "DELETE FROM product WHERE `product`.`product_id` = $id";
-            $data = $this->pdo->exec($sql);
-            if ($data === 1) {
-                return "ok";
-            }
-            return $data;
-        } catch (Exception $th) {
-            echo "Error: " . $th->getMessage();
-        }
-    }
-    public function updateProduct(Products $product)
-    {
-        try {
-            $sql = "UPDATE `product` SET
-            `category_id` = '$product->category_id', 
-            `product_name` = '$product->product_name', 
-            `description` = '$product->description',    
-            `price` = '$product->price', 
-            `color` = '$product->color', 
-            `storage_capacity` = '$product->storage_capacity', 
-            `stock_quantity` = '$product->stock_quantity', 
-            `image` = '$product->image' WHERE `product`.`product_id` = $product->product_id";
-            $data = $this->pdo->exec($sql);
-            if ($data === 1) {
-                return "ok";
-            }
-        } catch (Exception $th) {
-            echo "Error: " . $th->getMessage();
-        }
-    }
     public function findProduct($id)
     {
         try {
@@ -148,6 +151,6 @@ class ProductsQuery
             echo "Error: " . $th->getMessage();
         }
     }
-    
+
 }
 ?>

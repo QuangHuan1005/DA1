@@ -18,7 +18,6 @@
             margin: 0 auto;
             padding: 0 auto;
             box-sizing: border-box;
-
         }
 
         .link {
@@ -250,37 +249,12 @@
             position: relative;
         }
 
-        .tt {
-            width: 23%;
-            align-items: center;
-            background-color: white;
-            margin: 10px;
-
-            border-radius: 5px;
-
-        }
-
-        .tt h5 {
-            color: black;
-            margin-left: 10px;
-
-        }
-
-        .tt a {
-            text-decoration: none;
-        }
-
-        .tt p {
-            color: blue;
-            margin-left: 10px;
-            font-size: 20px;
-        }
-
         .sptt {
             border-top: 1px solid #ccc;
             padding-top: 20px;
             width: 1200px;
             margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         .menu2 {
@@ -547,8 +521,8 @@
     <?php include "components/header.php"; ?>
     <div class="container">
         <div class="link">
-            <a href="">Trang chủ ›</a>
-            <p> iPhone ›</p>
+            <a href="?act=home">Trang chủ ›</a>
+            <a href="?act=sanPham"> iPhone ›</a>
             <p> <?= $sp->product_name ?></p>
         </div>
         <div class="big">
@@ -655,17 +629,16 @@
         <!-- sp tuong tu -->
         <div class="sptt">
             <h2>Sản phẩm tương tự</h2>
-            <div class="boxall">
+            <div class="product-grid">
                 <?php foreach ($all as $key) {
-                    if ($key->category_id == $sp->category_id) { ?>
-                        <div class="tt" id="b">
+                    if ($key->product_id !== $sp->product_id) { ?>
+                        <div class="product" style="box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);margin-top: 20px;" id="b">
                             <!-- img o trong db : 	/upload/ip16.jpeg -->
                             <a href="?act=chiTiet&id=<?= $key->product_id ?>"><img src="<?= $key->image ?>" width="240px"
                                     height="240px" alt=""></a>
-                            <h5><?= $key->product_name ?></h5>
-                            <p><?= $key->price ?></p>
+                            <div class="product_name"><?= $key->product_name ?></div>
+                            <div class="product_price"><?= $key->price ?></div>
                         </div>
-
                     <?php }
                 } ?>
             </div>

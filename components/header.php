@@ -1,11 +1,10 @@
 <nav class="navbar">
     <div class="logo">
-        <a href="#">LOGO</a>
+        <a href="?act=home">LOGO</a>
     </div>
     <ul class="nav-links">
-        <li><a href="#">iPhone</a></li>
-        <li><a href="#">Máy cũ</a></li>
-        <li><a href="#">Phụ kiện</a></li>
+        <li><a href="?act=home">Trang chủ</a></li>
+        <li><a href="?act=sanPham">Sản phẩm</a></li>
         <li><a href="#">Tin Tức</a></li>
         <li><a href="#">Khuyến mại</a></li>
     </ul>

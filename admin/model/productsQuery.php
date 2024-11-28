@@ -39,8 +39,8 @@ class ProductsQuery
     public function createProduct(Products $product)
     {
         try {
-            $sql = "INSERT INTO `product` (`product_id`, `category_id`, `product_name`, `description`, `price`, `color`, `storage_capacity`, `stock_quantity`, `image`) 
-                                   VALUES (NULL, '$product->category_id', '$product->product_name', '$product->description', '$product->price', '$product->color', '$product->storage_capacity', '$product->stock_quantity', '$product->image');";
+            $sql = "INSERT INTO `product` (`product_id`, `category_id`, `product_name`, `description`, `price`, `color`, `storage_capacity`, `stock_quantity`, `image`,`create_at`) 
+                                   VALUES (NULL, '$product->category_id', '$product->product_name', '$product->description', '$product->price', '$product->color', '$product->storage_capacity', '$product->stock_quantity', '$product->image',NOW());";
             $data = $this->pdo->exec($sql);
             if ($data === 1) {
                 return "ok";
