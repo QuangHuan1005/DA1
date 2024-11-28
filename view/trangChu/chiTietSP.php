@@ -259,55 +259,48 @@
 
         .menu2 {
             width: 1200px;
-            align-items: center;
-            margin-top: 20px;
+            margin-top: 100px;
         }
 
         .menu2 ul {
             display: flex;
+            align-items: center;
+            justify-content: center;
             list-style-type: none;
         }
 
+        .menu2 ul li {
+            margin: 0;
+        }
+
         .menu2 ul li a {
-            text-decoration: none;
-            color: black;
+            margin: 0px 5px 0px 5px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 21px;
+            color: #1D1D1F;
+            min-width: 144px;
+            border: 1px solid #D2D2D7;
+            border-radius: 8px;
+            padding: 10px 20px;
         }
 
         .menu2 ul li a:focus {
-            color: rgba(0, 102, 204, 1);
-            border-bottom: 2px solid rgba(0, 102, 204, 1);
-        }
-
-        .menu2 ul li a:active {
-            color: rgba(0, 102, 204, 1);
-            border-bottom: 2px solid rgba(0, 102, 204, 1);
+            background: none !important;
+            color: #0066CC !important;
+            line-height: 21px;
+            font-size: 14px;
+            font-weight: 400;
+            border: 1px solid #0066CC;
+            padding: 10px 20px;
+            border-radius: 8px;
         }
 
         .all {
-            width: 1200px;
+            width: 100%;
             align-items: center;
-
             margin: 10px;
-        }
-
-        /* Định dạng cho .box */
-        .box {
-            margin: 20px;
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            /* Giới hạn chiều rộng của box */
-            max-width: 1200px;
-            /* Đảm bảo box không quá rộng */
-            margin-left: auto;
-            /* Căn giữa theo chiều ngang */
-            margin-right: auto;
-            /* Căn giữa theo chiều ngang */
-            display: none;
-            justify-content: center;
-            margin-left: 500px;
+            display: block;
         }
 
         /* Định dạng cho bảng */
@@ -347,11 +340,11 @@
         }
 
         /* Định dạng cho viền */
-        .table,
+        /* .table,
         .table th,
         .table td {
             border: 1px solid #ddd;
-        }
+        } */
 
         /* Mặc định: tất cả các box đều ẩn */
         .box {
@@ -363,41 +356,53 @@
             display: block;
         }
 
-        /* Kiểu dáng cho các menu */
-        .menu2 ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
+        .box {
+            margin: 20px;
+            padding: 15px;
+            width: 80%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            justify-content: center;
         }
 
-        .menu2 {
-            width: 1200px;
-
+        .table-striped {
+            width: 1100px;
+            margin-bottom: 1rem;
+            color: #212529;
+            border-collapse: collapse;
         }
 
-        .menu2 ul li a {
-            text-decoration: none;
-            color: #000;
-            font-weight: bold;
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05);
+            /* Màu nền nhạt cho các hàng lẻ */
         }
 
-        .menu2 ul li a:hover {
-            color: blue;
+        .spec_name {
+            width: 50%;
+            font-size: 14px;
+            padding: 10px;
+            font-weight: 700;
+            border-radius: 8px 0px 0px 8px;
         }
 
-        .new {
-            width: 100%;
-            max-width: 500px;
-            margin: 20px auto;
+        .spec_value {
+            width: 50%;
+            font-size: 14px;
+            padding: 10px;
+            font-weight: 700;
+            border-radius: 0px 8px 8px 0px;
+        }
+
+        .new1 {
+            width: 30%;
+            border-right: 1px solid #EBEBEB;
             padding: 20px;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
         }
 
         /* Tiêu đề form */
-        .new h2 {
+        .new1 h2 {
             font-size: 24px;
             color: #333;
             margin-bottom: 20px;
@@ -405,15 +410,15 @@
         }
 
         /* Các nhãn (labels) */
-        .new span {
-            font-size: 16px;
+        .new1 span {
+            font-size: 13px;
             color: #555;
             display: block;
             margin-bottom: 5px;
         }
 
         /* Các input fields */
-        .new .form-control {
+        .new1 .form-control {
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -423,14 +428,14 @@
             background-color: #f9f9f9;
         }
 
-        .new .form-control:focus {
+        .new1 .form-control:focus {
             border-color: #007bff;
             background-color: #fff;
             outline: none;
         }
 
         /* Nút đăng */
-        .new .btn-info {
+        .new1 .btn-info {
             width: 100%;
             padding: 12px;
             background-color: #17a2b8;
@@ -441,12 +446,12 @@
             cursor: pointer;
         }
 
-        .new .btn-info:hover {
+        .new1 .btn-info:hover {
             background-color: #138496;
         }
 
         /* Hiển thị thông báo lỗi và thành công */
-        .new .alert {
+        .new1 .alert {
             margin-top: 10px;
             font-size: 14px;
             padding: 10px;
@@ -454,22 +459,19 @@
             border-radius: 4px;
         }
 
-        .new .alert-danger {
+        .new1 .alert-danger {
             background-color: #dc3545;
         }
 
-        .new .alert-success {
+        .new1 .alert-success {
             background-color: #28a745;
         }
 
         /* Phần hiển thị đánh giá */
         .show {
-            max-width: 600px;
-            margin: 40px auto;
+            width: 70%;
             padding: 20px;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
             font-family: Arial, sans-serif;
         }
 
@@ -508,6 +510,10 @@
             text-align: center;
             color: #999;
             font-style: italic;
+        }
+
+        .cmt {
+            display: flex;
         }
 
         /* Hiệu ứng hover nếu cần */
@@ -652,56 +658,62 @@
         </div>
         <div class="all">
             <div class="box active" id="box1">
-                <table class="table table-striped">
-                    <thead>
-                        <th scope="col">Tên sản phẩm</th>
-                        <th scope="col">Mô tả sản phẩm</th>
-                        <th scope="col">Số lượng</th>
-                        <th scope="col">Dung lượng bộ nhớ</th>
-                        <th scope="col">Màu sắc</th>
-                        </tr>
-                    </thead>
+                <table class="table-striped">
                     <tbody>
-                        <tr>
-                            <td><?= $sp->product_name ?></td>
-                            <td><?= $sp->description ?></td>
-                            <td><?= $sp->stock_quantity ?></td>
-                            <td><?= $sp->storage_capacity ?></td>
-                            <td><?= $sp->color ?></td>
+                        <tr class="odd">
+                            <td class="spec_name">Tên sản phẩm</td>
+                            <td class="spec_value"><?= $sp->product_name ?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td class="spec_name">Dung lượng bộ nhớ</td>
+                            <td class="spec_value"><?= $sp->storage_capacity ?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td class="spec_name">Màu sắc</td>
+                            <td class="spec_value"><?= $sp->color ?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td class="spec_name">Mô tả</td>
+                            <td class="spec_value"><?= $sp->description ?></td>
+                        </tr>
+                        <tr class="odd">
+                            <td class="spec_name">Số lượng còn lại</td>
+                            <td class="spec_value"><?= $sp->stock_quantity ?></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
             <div class="box" id="box2">
-                <div class="new">
-                    <form action="" id="form" method="post" enctype="multipart/form-data">
-                        <h2>Đánh giá sản phẩm</h2>
-                        <span>Tên người dùng</span>
-                        <input type="text" name="username" class="form-control"><br>
-                        <span>ratting</span>
-                        <input type="number" name="rating" class="form-control" min="1" max="5"><br>
-                        <span>comment</span>
-                        <input type="text" name="comment" class="form-control">
-                        <button type="submit" name="add" class="btn btn-info">Đăng</button>
-                        <?= isset($loi) ? $loi : '' ?>
-                        <?= isset($thanhcong) ? $thanhcong : '' ?>
-                    </form>
-                </div>
-                <div class="show">
-                    <h1>Đánh giá</h1>
-                    <?php if (!empty($all_bl)) { ?>
-                        <?php foreach ($all_bl as $bl) {
-                            if ($bl->product_id == $sp->product_id) { ?>
-                                <h3><?= $bl->username ?></h3>
-                                <p><?= $bl->rating ?>/5</p>
-                                <p><?= $bl->comment ?></p>
-                                <br>
-                            <?php }
-                        } ?>
-                    <?php } else { ?>
-                        <p>Chưa có đánh giá nào cho sản phẩm này.</p>
-                    <?php } ?>`
+                <div class="cmt">
+                    <div class="new1">
+                        <form action="" id="form" method="post" enctype="multipart/form-data">
+                            <h2>Bình luận</h2>
+                            <span>Tên của bạn</span>
+                            <input type="text" name="username" class="form-control"><br>
+                            <span>Email hoặc số điện thoại</span>
+                            <input type="number" name="rating" class="form-control" min="1" max="5"><br>
+                            <span>Nội dung bình luận</span>
+                            <input type="text" name="comment" class="form-control">
+                            <button type="submit" name="add" class="btn btn-info">Gửi</button>
+                            <?= isset($loi) ? $loi : '' ?>
+                            <?= isset($thanhcong) ? $thanhcong : '' ?>
+                        </form>
+                    </div>
+                    <div class="show">
+
+                        <?php if (!empty($all_bl)) { ?>
+                            <?php foreach ($all_bl as $bl) {
+                                if ($bl->product_id == $sp->product_id) { ?>
+                                    <h3><?= $bl->username ?></h3>
+                                    <p><?= $bl->rating ?></p>
+                                    <p><?= $bl->comment ?></p>
+                                    <br>
+                                <?php }
+                            } ?>
+                        <?php } else { ?>
+                            <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>

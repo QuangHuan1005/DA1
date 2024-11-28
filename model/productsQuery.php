@@ -38,7 +38,7 @@ class ProductsQuery
     public function productRCM(Products $products)
     {
         try {
-            $sql = "SELECT * FROM `product` WHERE `product_id` != $products->product_id AND `storage_capacity` LIKE '$products->stock_quantity' LIMIT 4";
+            $sql = "SELECT * FROM `product` WHERE `product_id` != $products->product_id AND `storage_capacity` LIKE '$products->storage_capacity' LIMIT 4";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {

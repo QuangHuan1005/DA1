@@ -72,7 +72,10 @@ include 'components/header.php';
     <div class="product-grid">
         <?php foreach ($list as $product): ?>
             <div class="product">
-                <img src="<?= $product->image ?>">
+
+                <a href="?act=chiTiet&id=<?= $product->product_id ?>">
+                    <img src="<?= $product->image ?>">
+                </a>
                 <div class="product_name"><?= $product->product_name; ?></div>
                 <div class="product_price"><?= number_format($product->price) . "₫" ?></div>
             </div>
