@@ -700,7 +700,6 @@
                         </form>
                     </div>
                     <div class="show">
-
                         <?php if (!empty($all_bl)) { ?>
                             <?php foreach ($all_bl as $bl) {
                                 if ($bl->product_id == $sp->product_id) { ?>
