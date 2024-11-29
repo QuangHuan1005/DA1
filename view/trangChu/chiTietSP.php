@@ -704,7 +704,6 @@
                             <?php foreach ($all_bl as $bl) {
                                 if ($bl->product_id == $sp->product_id) { ?>
                                     <h3><?= $bl->username ?></h3>
-                                    <p><?= $bl->rating ?></p>
                                     <p><?= $bl->comment ?></p>
                                     <br>
                                 <?php }

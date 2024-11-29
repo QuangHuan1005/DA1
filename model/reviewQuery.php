@@ -1,5 +1,5 @@
-<?php 
-    class ReviewQuery
+<?php
+class ReviewQuery
 {
     public $pdo;
     public function __construct()
@@ -12,6 +12,7 @@
     }
     public function all()
     {
+        $loi = "";
         try {
             $sql = "SELECT * FROM `reviews`";
             $data = $this->pdo->query($sql)->fetchAll();
@@ -34,19 +35,23 @@
     }
     public function add(Reviews $review)
     {
-        try{
+        try {
             //lay userid tu session v neu ko co thi gan null
-            $user_id = isset($_SESSION['Users_id']) ? $_SESSION['Users_id'] : NULL; 
-            $sql="INSERT INTO `reviews` (`reviews_id`, `product_id`, `user_id`, `rating`, `comment`, `review_date`, `username`) 
-            VALUES (NULL, '$review->product_id',  " . ($user_id !== NULL ? $user_id : 'NULL') . ", '$review->rating', '$review->comment', NOW(), '$review->username');";
-            $data=$this->pdo->exec($sql);
-            if($data === 1){
-                return "ok";
+            if (isset($_SESSION['Users_id'])) {
+                $user_id = $_SESSION['Users_id'];
+                $sql = "INSERT INTO `reviews` (`reviews_id`, `product_id`, `user_id`, `rating`, `comment`, `review_date`, `username`) 
+                VALUES (NULL, '$review->product_id',  " . ($user_id !== NULL ? $user_id : 'NULL') . ", '$review->rating', '$review->comment', NOW(), '$review->username');";
+                $data = $this->pdo->exec($sql);
+                if ($data === 1) {
+                    return "ok";
+                }
+            } else {
+                $loi = "Đăng nhập để bình luận";
             }
-        }catch (Exception $th) {
+        } catch (Exception $th) {
             echo "loi ham add: " . $th->getMessage();
         }
     }
-    
+
 }
 ?>

@@ -21,6 +21,8 @@
             <?php
         }
         ?>
-        <a href="#"><i class="fas fa-shopping-cart icon"></i> 0</a>
+        <a href="#"><i class="fas fa-shopping-cart icon"></i>
+            <span class="badge">0</span>
+        </a>
     </div>
 </nav>
