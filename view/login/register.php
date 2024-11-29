@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Ký</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
         /* Reset CSS */
         * {
-            margin: 0;
-            padding: 0;
+            margin: 0 auto;
+            padding: 0 auto;
             box-sizing: border-box;
         }
 
@@ -24,9 +23,10 @@
         }
 
         .box {
-            width: 1500px;
             display: flex;
             justify-content: space-around;
+            padding: 50px 30px;
+            margin: 50px 250px;
         }
 
         /* Container của form */
@@ -110,6 +110,14 @@
             color: #ff4d4d;
         }
 
+        .login_form {
+            width: 462px;
+        }
+
+        .login_form h1 {
+            font-weight: 100;
+        }
+
         /* Nút chưa có tài khoản */
         .register-btn {
             display: block;
@@ -154,45 +162,47 @@
         <div class="img">
             <img src="upload/TND_M402_010 1.jpeg" alt="">
         </div>
-        <form method="POST" enctype="multipart/form-data">
-            <h1>Đăng Ký Tài Khoản</h1>
-            <label for="username">Tên đăng nhập</label><br>
-            <input type="text" id="username" name="username" required><br><br>
+        <div class="login_form">
+            <form class="form_res" method="POST" enctype="multipart/form-data">
+                <h1>Đăng ký tài khoản</h1>
+                <label for="username">Tên đăng nhập</label>
+                <input type="text" id="username" name="username" required>
 
-            <label for="email">Họ và tên</label><br>
-            <input type="text" name="NameUser" required><br><br>
+                <label for="email">Họ và tên</label>
+                <input type="text" name="NameUser" required>
 
-            <label for="email">Email</label><br>
-            <input type="email" name="email" required><br><br>
+                <label for="email">Email</label>
+                <input type="email" name="email" required>
 
-            <label for="email">Ảnh đại diện</label><br>
-            <input type="file" name="image" required><br><br>
+                <label for="email">Ảnh đại diện</label>
+                <input type="file" name="image" required>
 
-            <label for="password">Mật khẩu</label><br>
-            <input type="password" id="password" name="password" required><br><br>
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" name="password" required>
 
-            <label for="confirm_password">Xác nhận mật khẩu</label><br>
-            <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+                <label for="confirm_password">Xác nhận mật khẩu</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
 
-            <?php
-            // Hiển thị thông báo lỗi nếu có
-            if (isset($_SESSION['error'])) {
-                echo '<div style="color: red;">' . $_SESSION['error'] . '</div>';
-                unset($_SESSION['error']);
-            }
+                <?php
+                // Hiển thị thông báo lỗi nếu có
+                if (isset($_SESSION['error'])) {
+                    echo '<div style="color: red;">' . $_SESSION['error'] . '</div>';
+                    unset($_SESSION['error']);
+                }
 
-            // Hiển thị thông báo thành công
-            if (isset($_SESSION['success'])) {
-                echo '<div style="color: green;">' . $_SESSION['success'] . '</div>';
-                unset($_SESSION['success']);
-            }
-            ?>
-            <br>
-            <input type="submit" name="submit" value="Đăng Ký">
+                // Hiển thị thông báo thành công
+                if (isset($_SESSION['success'])) {
+                    echo '<div style="color: green;">' . $_SESSION['success'] . '</div>';
+                    unset($_SESSION['success']);
+                }
+                ?>
+                <br>
+                <input type="submit" name="submit" value="Đăng Ký">
 
 
-            <a href="?act=login">Đã có tài khoản? Đăng nhập</a>
-        </form>
+                <div>Đã có tài khoản? <a href="?act=login"> Đăng nhập ngay</a></div>
+            </form>
+        </div>
 
 
     </div>
