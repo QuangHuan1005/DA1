@@ -30,6 +30,8 @@ match ($act) {
   "chiTiet" => (new ProductsController())->chiTiet($id),
   "phuKien" => (new ProductsController())->pk(),
   "mayCu" => (new ProductsController())->old(),
+  "tinTuc" => (new homecontroller()) ->news_list(),
+  "chiTietNew" => (new homecontroller()) ->chiTietNews($id),
   default => (new homecontroller())->error(),
 }
   ?>

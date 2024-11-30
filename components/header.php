@@ -5,7 +5,7 @@
     <ul class="nav-links">
         <li><a href="?act=home">Trang chủ</a></li>
         <li><a href="?act=sanPham">Sản phẩm</a></li>
-        <li><a href="#">Tin Tức</a></li>
+        <li><a href="?act=tinTuc">Tin Tức</a></li>
         <li><a href="#">Khuyến mại</a></li>
     </ul>
     <div class="icon-links">
