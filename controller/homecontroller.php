@@ -114,7 +114,20 @@ class homecontroller
         // Hiển thị trang đăng ký
         include "view/login/register.php";
     }
+    public function news_list()
+    {
+        $all_news = $this->newQuery->all_news();
+        include "view/trangChu/news.php";
+    }
+    public function chiTietNews($id)
+    {
+        if ($id == "") {
+            echo "Không tìm thấy ID sản phẩm.";
+        } else {
+            $new = $this->newQuery->findNews($id);
 
-
+            include 'view/trangChu/chiTietNews.php';
+        }
+    }
 }
 ?>

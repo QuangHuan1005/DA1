@@ -31,6 +31,10 @@ match ($act) {
   "logout" => (new homeController())->logout(),
   "sanPham" => (new ProductsController())->list(),
   "chiTiet" => (new ProductsController())->chiTiet($id),
+  "phuKien" => (new ProductsController())->pk(),
+  "mayCu" => (new ProductsController())->old(),
+  "tinTuc" => (new homecontroller())->news_list(),
+  "chiTietNew" => (new homecontroller())->chiTietNews($id),
   "gioHang" => (new cartController())->cart($id),
   default => (new homecontroller())->error(),
 }
