@@ -149,7 +149,9 @@ class ProductsController
                     }
                 }
             }
+            if (isset($_POST['cart'])) {
 
+            }
             include 'view/trangChu/chiTietSP.php';
         }
     }
