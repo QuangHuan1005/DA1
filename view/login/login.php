@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-        /* Reset CSS */
         * {
-            margin: 0;
-            padding: 0;
+            margin: 0 auto;
+            padding: 0 auto;
             box-sizing: border-box;
         }
 
-        /* Body và font */
         body {
             font-family: 'Arial', sans-serif;
             background-color: white;
@@ -25,46 +22,73 @@
 
         }
 
+        .title {
+            margin-bottom: 20px;
+        }
+
         .box {
-            width: 1500px;
             display: flex;
             justify-content: space-around;
+            padding: 50px 30px;
+            margin: 50px 250px;
         }
 
-        /* Container của form */
-        .login-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+        .login_form {
+            width: 462px;
         }
 
-        /* Tiêu đề của form */
-        .login-container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
+        .login_form h1 {
+            font-weight: 100;
         }
 
         /* Form labels và inputs */
         label {
             font-size: 14px;
             color: #333;
-            margin-bottom: 8px;
             display: block;
         }
 
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
+            padding: 15px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 8px;
             font-size: 16px;
             transition: border-color 0.3s;
+            margin-bottom: 20px;
+        }
+
+        .inputs {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .inputs * {
+            display: inline-block;
+            width: auto;
+            margin: 5px;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .inputs span a {
+            color: #0066CC;
+
+        }
+
+        .inputs label {
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 24px;
+            color: #86868B;
+            margin-bottom: 10px;
+        }
+
+        input#checkbox {
+            width: 18px;
+            height: 18px;
+            margin-top: 0px;
         }
 
         input[type="text"]:focus,
@@ -152,26 +176,32 @@ include 'components/header.php';
         <div class="img">
             <p><img src="upload/VNU_M492_08 1.jpeg" alt=""></p>
         </div>
+        <div class="login_form">
+            <form id="login" method="POST">
+                <div class="title">
+                    <h1>Đăng nhập</h1>
+                </div>
+                <label for="username">Tên đăng nhập:</label>
+                <input type="text" id="username" name="username">
+                <label for="password">Mật khẩu:</label>
+                <input type="password" id="password" name="password">
+                <div class="inputs">
+                    <div>
+                        <input type="checkbox" name="checkbox" id="checkbox">
+                        <label for="checkbox">Nhớ mật khẩu</label>
+                    </div>
+                    <span><a href="">Quên mật khẩu?</a></span>
+                </div>
+                <input type="submit" name="submit" value="Đăng Nhập">
+                <div class="kq">
+                    <span>
+                        <?php echo $kq; ?>
+                    </span>
+                </div><br>
 
-        <form id="login" method="POST">
-            <h1>Login</h1><br>
-            <label for="username">Tên đăng nhập:</label><br>
-            <input type="text" id="username" name="username"><br><br>
-
-            <label for="password">Mật khẩu:</label><br>
-            <input type="password" id="password" name="password"><br><br>
-
-            <input type="submit" name="submit" value="Đăng Nhập">
-
-
-            <div class="kq">
-                <span>
-                    <?php echo $kq; ?>
-                </span>
-            </div><br>
-
-            <a href="?act=register">Chưa có tài khoản</a>
-        </form>
+                <div>Bạn chưa có tài khoản? <a href="?act=register">Tạo tài khoản ngay</a></div>
+            </form>
+        </div>
     </div>
     </form>
     <?php include "components/footer.php"; ?>

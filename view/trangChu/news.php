@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* General Styles */
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9f9f9;
@@ -166,36 +167,39 @@ a:hover {
 
     </style>
 </head>
+
 <body>
-    <?php include "/laragon/www/DA1/components/header.php"; ?>
-<div class="container">
+    <?php include "components/header.php"; ?>
+    <div class="container">
         <div class="link">
             <a href="?act=home">Trang chủ ›</a>
-            <p>Tin Tức  </p>
+            <p>Tin Tức </p>
         </div>
-    <div class="main">
-        <div class="title">Tin Tức </div>
-        <div class="news-showcase">
-            <div class="news-grid">
-            <?php foreach ($all_news as $key) { ?>
-                            <div class="box1 box active">
-                                <!-- img o trong db : 	/upload/ip16.jpeg -->
-                                <div class="news">
-                                    <a href="?act=chiTietNew&id=<?= $key->new_id ?>">
-                                        <img src="<?= $key->thumbnail ?>" width="240px" height="240px" alt="">
-                                        
-                                    </a>
-                                    <div class="nd">
+        <div class="main">
+            <div class="title">Tin Tức </div>
+            <div class="news-showcase">
+                <div class="news-grid">
+                    <?php foreach ($all_news as $key) { ?>
+                        <div class="box1 box active">
+                            <!-- img o trong db : 	/upload/ip16.jpeg -->
+                            <div class="news">
+                                <a href="?act=chiTietNew&id=<?= $key->new_id ?>">
+                                    <img src="<?= $key->thumbnail ?>" width="240px" height="240px" alt="">
+
+                                </a>
+                                <div class="nd">
                                     <div class="product_name"><?= $key->title ?></div>
-                                    <div class="product_price"><i class="fa-solid fa-calendar-days"></i>  <?= $key->create_at ?></div>
-                                    </div>
+                                    <div class="product_price"><i class="fa-solid fa-calendar-days"></i>
+                                        <?= $key->create_at ?></div>
                                 </div>
                             </div>
-                        <?php } ?>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<?php include "/laragon/www/DA1/components/footer.php"; ?>
+    <?php include "components/footer.php"; ?>
 </body>
+
 </html>

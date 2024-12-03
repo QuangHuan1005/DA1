@@ -621,14 +621,15 @@
 
                     </div>
                     <!-- button -->
-                    <div class="nut">
-                        <button><a href="#">Mua ngay</a></button>
-                        <div class="nut2">
-                            <button><a href="#">Trả góp</a></button>
-                            <button><a href="#">Thu cũ đổi mới</a></button>
+                    <form method="POST">
+                        <div class="nut">
+                            <button type="submit" name="cart" style="color:white">Mua ngay</button>
+                            <div class="nut2">
+                                <button><a href="#">Trả góp</a></button>
+                                <button><a href="#">Thu cũ đổi mới</a></button>
+                            </div>
                         </div>
-                    </div>
-
+                    </form>
                 </div>
             </div>
         </div>
@@ -700,12 +701,10 @@
                         </form>
                     </div>
                     <div class="show">
-
                         <?php if (!empty($all_bl)) { ?>
                             <?php foreach ($all_bl as $bl) {
                                 if ($bl->product_id == $sp->product_id) { ?>
                                     <h3><?= $bl->username ?></h3>
-                                    <p><?= $bl->rating ?></p>
                                     <p><?= $bl->comment ?></p>
                                     <br>
                                 <?php }

@@ -4,6 +4,7 @@ require "common/env.php";
 require "common/function.php";
 require "controller/homecontroller.php";
 require "controller/productsController.php";
+require "controller/cartController.php";
 require "controller/categoryController.php";
 require "model/accountQuery.php";
 require "model/account.php";
@@ -15,6 +16,8 @@ require "model/review.php";
 require "model/reviewQuery.php";
 require "model/news.php";
 require "model/newsQuery.php";
+require "model/cart.php";
+require "model/cartQuery.php";
 
 // index.php
 $act = $_GET["act"] ?? "";
@@ -30,8 +33,9 @@ match ($act) {
   "chiTiet" => (new ProductsController())->chiTiet($id),
   "phuKien" => (new ProductsController())->pk(),
   "mayCu" => (new ProductsController())->old(),
-  "tinTuc" => (new homecontroller()) ->news_list(),
-  "chiTietNew" => (new homecontroller()) ->chiTietNews($id),
+  "tinTuc" => (new homecontroller())->news_list(),
+  "chiTietNew" => (new homecontroller())->chiTietNews($id),
+  "gioHang" => (new cartController())->cart($id),
   default => (new homecontroller())->error(),
 }
   ?>

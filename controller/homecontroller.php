@@ -114,17 +114,19 @@ class homecontroller
         // Hiển thị trang đăng ký
         include "view/login/register.php";
     }
-    public function news_list(){
-        $all_news=$this->newQuery->all_news();
-        include "/laragon/www/DA1/view/trangChu/news.php";
+    public function news_list()
+    {
+        $all_news = $this->newQuery->all_news();
+        include "view/trangChu/news.php";
     }
-    public function chiTietNews($id){
+    public function chiTietNews($id)
+    {
         if ($id == "") {
             echo "Không tìm thấy ID sản phẩm.";
         } else {
-        $new=$this->newQuery->findNews($id);
+            $new = $this->newQuery->findNews($id);
 
-        include '/laragon/www/DA1/view/trangChu/chiTietNews.php';
+            include 'view/trangChu/chiTietNews.php';
         }
     }
 }

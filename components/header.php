@@ -20,7 +20,13 @@
             <a href="?act=login"><i class="fas fa-user icon"></i></a>
             <?php
         }
+        if (isset($_SESSION['username'])) { ?>
+            <a href="?act=gioHang&id=<?= $_SESSION['Users_id'] ?? "" ?>"><i class="fas fa-shopping-cart icon"></i>
+                <span class="badge">0</span>
+            </a>
+            <?php
+        }
         ?>
-        <a href="#"><i class="fas fa-shopping-cart icon"></i> 0</a>
+
     </div>
 </nav>
