@@ -7,59 +7,116 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <style>
-    * {
-            margin: 0 auto;
-            padding: 0 auto;
-            box-sizing: border-box;
-        }
+   /* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .link {
-            width: 100%;
-            display: flex;
-            background-color: #ffffff;
-            align-items: center;
-            /* Căn giữa theo chiều dọc */
-            padding: 10px 5px;
-            padding-left: 352px;
-        }
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+    margin: 0 auto;
+}
 
-        /* Cải thiện cách hiển thị của các phần tử con */
-        .link a,
-        .link p {
-            margin: 0;
-            /* Loại bỏ margin mặc định của các phần tử */
-            padding: 0 10px;
-            /* Thêm khoảng cách giữa các phần tử nếu cần */
-            text-decoration: none;
-            color: black;
-        }
-        .main{
-            width: 100%;
-            align-items: center;
-        }
-        .img{
-            width: 1200px;
-            align-items: center;
-        }
-        .img img{
-            max-width:1200px;
-            height: auto;
-            border-radius: 10px;
-        }
-        .nd{
-            width: 1200px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            align-items: center;
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-        .title{
-            margin: 10px;
-        }
-        .content{
-            margin: 10px;
-        }
+a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+/* Header Link Section */
+.link {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    gap: 5px;
+}
+
+.link p {
+    color: #333;
+}
+
+/* Main Section */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.img {
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+.img img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nd {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.nd .title h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.nd .title p {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nd .content {
+    font-size: 16px;
+    color: #444;
+    margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .link {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .nd .title h1 {
+        font-size: 24px;
+    }
+
+    .nd {
+        padding: 15px;
+    }
+}
+
         </style>
 </head>
 <body>
