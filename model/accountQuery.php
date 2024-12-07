@@ -73,17 +73,27 @@ class loginquery
     public function createUser($input)
     {
         try {
-            // Thêm người dùng mới vào cơ sở dữ liệu, với role mặc định là 'client'
-            $sql = "INSERT INTO `users` (`Users_id`,`nameAccount`, `email`, `password`, `role`, `created_at`, `update_at`, `image`, `NameUser`) 
-                    VALUES (NULL,'$input->nameAccount', '$input->email', '$input->password', 'client', NOW(), NOW(), '$input->image', '$input->NameUser');";
-            $data = $this->pdo->exec($sql);
+            $this->pdo->beginTransaction();
 
-            if ($data === 1) {
-                return "ok";
-            } else {
-                return $data;
-            }
+            $sqlUser = "INSERT INTO `users` (`Users_id`,`nameAccount`, `email`, `password`, `role`, `created_at`, `update_at`, `image`, `NameUser`) 
+                    VALUES (NULL,':nameAccount', ':email', ':password', 'client', NOW(), NOW(), ':image', ':NameUser');";
+            $stmlUser = $this->pdo->prepare($sqlUser);
+            $stmlUser->execute([
+                ':nameAccount' => $input->nameAccount,
+                ':email' => $input->email,
+                ':password' => $input->password,
+                ':image' => $input->image,
+                ':NameUser' => $input->NameUser,
+            ]);
+            $userID = $this->pdo->lastInsertId();
+
+            $sqlCart = "INSERT INTO `carts` (`carts_id`, `user_id`) VALUES (NULL, ':id')";
+            $stmlCart = $this->pdo->prepare($sqlCart);
+            $stmlCart->execute([':id' => $userID]);
+            $this->pdo->commit();
+            return "ok";
         } catch (Exception $e) {
+            $this->pdo->rollBack();
             echo "Lỗi: " . $e->getMessage();
         }
     }

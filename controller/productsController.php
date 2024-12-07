@@ -4,11 +4,13 @@ class ProductsController
     public $productsController;
     public $CategoryController;
     public $reviewscontroller;
+    public $cartController;
     public function __construct()
     {
         $this->productsController = new ProductsQuery();
         $this->CategoryController = new CategoryQuery();
         $this->reviewscontroller = new ReviewQuery();
+        $this->cartController = new cartQuery();
     }
     public function __destruct()
     {
@@ -125,9 +127,9 @@ class ProductsController
             $all_bl = $this->reviewscontroller->all(); // Lấy danh sách đánh giá
             $loi = "";
             $thanhcong = "";
+            $loiadd = "";
 
             if (isset($_POST['add'])) { // Xử lý thêm bình luận
-
                 $review = new Reviews();
                 $review->product_id = $id; // Gắn ID sản phẩm
                 $review->username = $_POST['username'];
@@ -149,8 +151,34 @@ class ProductsController
                     }
                 }
             }
+            $user_id = $_SESSION['Users_id'] ?? null;
             if (isset($_POST['cart'])) {
-
+                if (empty($user_id)) {
+                    $loiadd = '<div class="alert1">Đăng nhập để mua hàng.</div>';
+                } else {
+                    $cart = $this->cartController->cart($user_id);
+                    $infoCart = $this->cartController->infoCart($user_id);
+                    $check = false;
+                    $quantity = 0;
+                    if (!empty($infoCart->infoPro)) {
+                        foreach ($infoCart->infoPro as $key) {
+                            if ($id == $key['productId']) {
+                                $check = true;
+                                $quantity = $key['quantityProduct'];
+                                break;
+                            }
+                        }
+                    }
+                    if (!$check) {
+                        $res = $this->cartController->addItems($cart['carts_id'], $id, $_POST['quantity']);
+                        if ($res = "ok") {
+                            $loiadd = '<div class="alert1">Đã thêm vào giỏ hàng.</div>';
+                        }
+                    } else {
+                        $res = $this->cartController->updateQuantity($quantity + $_POST['quantity'], $id, $cart['carts_id']);
+                        $loiadd = '<div class="alert1">Đã thêm vào giỏ hàng.</div>';
+                    }
+                }
             }
             include 'view/trangChu/chiTietSP.php';
         }

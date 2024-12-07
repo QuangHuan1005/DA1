@@ -216,6 +216,21 @@
             border: none;
         }
 
+        .alert1 {
+            display: grid;
+            width: 100%;
+            height: 50px;
+            background-color: red;
+            border-radius: 5px;
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+            margin-top: 10px;
+            border: none;
+            color: white;
+            font-size: 13px;
+        }
+
         .nut button a {
             color: white;
             text-decoration: none;
@@ -537,9 +552,15 @@
                     <img src="<?= $sp->image ?>" alt="">
                 </div>
                 <div class="info">
+
                     <h1><?= $sp->product_name ?></h1>
                     <h2><?= number_format($sp->price) . "₫" ?></h2>
                     <span>(Đã bao gồm VAT)</span>
+                    <!-- tang san pham them vao gio hang -->
+                    <button class="btn-decrease">-</button>
+                    <input type="number" class="quantity-input" value="1" min="1" />
+                    <button class="btn-increase">+</button>
+
                     <!-- box thong tin uu dai -->
                     <div class="uuDai">
                         <!-- icon va text uu dai -->
@@ -623,7 +644,9 @@
                     <!-- button -->
                     <form method="POST">
                         <div class="nut">
+                            <input id="quantity-value" name="quantity" value="1"></input>
                             <button type="submit" name="cart" style="color:white">Mua ngay</button>
+                            <?= $loiadd ?>
                             <div class="nut2">
                                 <button><a href="#">Trả góp</a></button>
                                 <button><a href="#">Thu cũ đổi mới</a></button>
@@ -749,6 +772,38 @@
                 if (targetBox) {
                     targetBox.classList.add('active'); // Thêm lớp active để hiển thị
                 }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
+            const btnDecrease = document.querySelector(".btn-decrease");
+            const btnIncrease = document.querySelector(".btn-increase");
+            const quantityValue = document.getElementById("quantity-value");
+            const quantityInput = document.querySelector(".quantity-input");
+
+            const updateQuantityDisplay = () => {
+                quantityValue.value = quantityInput.value;
+            };
+
+            // Giảm số lượng
+            btnDecrease.addEventListener("click", () => {
+                let currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                    updateQuantityDisplay();
+                }
+            });
+
+            // Tăng số lượng
+            btnIncrease.addEventListener("click", () => {
+                let currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+                updateQuantityDisplay();
+            });
+            quantityInput.addEventListener("input", () => {
+                if (quantityInput.value < 1) {
+                    quantityInput.value = 1;
+                }
+                updateQuantityDisplay();
             });
         });
     </script>

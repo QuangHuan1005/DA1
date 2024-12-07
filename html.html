@@ -1,0 +1,13 @@
+<input type="text" id="myInput" value="Hello World" />
+<button id="changeValue">Thay đổi giá trị</button>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const inputElement = document.getElementById("myInput");
+    const button = document.getElementById("changeValue");
+
+    // Thay đổi giá trị của input khi bấm nút
+    button.addEventListener("click", function () {
+      inputElement.value = "Giá trị mới"; // Thay đổi giá trị value
+    });
+  });
+</script>

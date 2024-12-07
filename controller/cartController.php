@@ -11,6 +11,8 @@ class CartController
     }
     public function cart($id)
     {
-        include "view/trangChu/cart.php";
+        $cart = $this->cartQuery->cart($id);
+        $info = $this->cartQuery->infoCart($id);
+        include "view/trangChu/gioHang.php";
     }
 }

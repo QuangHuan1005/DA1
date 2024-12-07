@@ -7,8 +7,8 @@ class Cart
 class Cart_items
 {
     public $cart_items_id;
+
     public $cart_id;
-    public $product_id;
-    public $quantity;
-    public $price;
+    public $NameUser;
+    public $infoPro;
 }
