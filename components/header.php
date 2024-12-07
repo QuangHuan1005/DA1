@@ -21,9 +21,7 @@
             <?php
         }
         if (isset($_SESSION['username'])) { ?>
-            <a href="?act=gioHang&id=<?= $_SESSION['Users_id'] ?? "" ?>"><i class="fas fa-shopping-cart icon"></i>
-                <span class="badge">0</span>
-            </a>
+            <a href="?act=gioHang&id=<?= $_SESSION['Users_id'] ?? "" ?>"><i class="fas fa-shopping-cart icon"></i></a>
             <?php
         }
         ?>

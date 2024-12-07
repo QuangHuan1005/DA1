@@ -54,6 +54,7 @@ class CartQuery
         try {
             $sql = "SELECT
                 users.NameUser,
+                users.Users_id,
                 product.product_name,
                 product.price,
                 product.image,
@@ -79,12 +80,13 @@ class CartQuery
                 $cart->NameUser = $data[0]['NameUser'];
                 $cart->cart_id = $data[0]['cart_id'];
                 $cart->cart_items_id = $data[0]['cart_items_id'];
-
                 $cart->infoPro = [];
                 foreach ($data as $key) {
                     $cart->infoPro[] = [
+                        'cart_items_id' => $key['cart_items_id'],
                         'nameProduct' => $key['product_name'],
                         'imageProduct' => $key['image'],
+                        'Users_id' => $key['Users_id'],
                         'quantityProduct' => $key['quantity'],
                         'priceProduct' => $key['price'],
                         'productId' => $key['product_id'],
@@ -93,6 +95,18 @@ class CartQuery
                 return $cart;
             } else {
                 return "trong";
+            }
+        } catch (Exception $th) {
+            echo "Error: " . $th->getMessage();
+        }
+    }
+    public function deleteItem($id)
+    {
+        try {
+            $sql = "DELETE FROM cart_items WHERE `cart_items`.`cart_items_id` = $id";
+            $data = $this->pdo->exec($sql);
+            if ($data === 1) {
+                return "ok";
             }
         } catch (Exception $th) {
             echo "Error: " . $th->getMessage();

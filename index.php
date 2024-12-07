@@ -22,6 +22,7 @@ require "model/cartQuery.php";
 // index.php
 $act = $_GET["act"] ?? "";
 $id = $_GET["id"] ?? "";
+$user_id = $_GET["userID"] ?? "";
 
 match ($act) {
   "" => (new homecontroller())->home(),
@@ -36,6 +37,7 @@ match ($act) {
   "tinTuc" => (new homecontroller())->news_list(),
   "chiTietNew" => (new homecontroller())->chiTietNews($id),
   "gioHang" => (new cartController())->cart($id),
+  "deleteCartItem" => (new cartController())->deleteItem($user_id, $id),
   default => (new homecontroller())->error(),
 }
   ?>

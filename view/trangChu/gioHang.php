@@ -386,7 +386,8 @@ include 'components/header.php';
                             <div class="info-cart">
                                 <div class="info-left">
                                     <div class="name"><?= $key['nameProduct'] ?></div>
-                                    <div class="remove-item" onclick="removeItem(<?= $key['productId'] ?>)">Xóa</div>
+                                    <a href="?act=deleteCartItem&id=<?= $key['cart_items_id'] ?>&userID=<?= $key['Users_id'] ?>"
+                                        class="remove-item">Xóa</a>
                                 </div>
                                 <div class="info-right">
                                     <div class="price" id="price_<?= $key['priceProduct'] ?>"

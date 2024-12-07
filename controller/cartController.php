@@ -15,4 +15,13 @@ class CartController
         $info = $this->cartQuery->infoCart($id);
         include "view/trangChu/gioHang.php";
     }
+    public function deleteItem($user_id, $id)
+    {
+        if ($id !== "") {
+            $data = $this->cartQuery->deleteItem($id);
+            if ($data === "ok") {
+                header("Location:?act=gioHang&id={$user_id}");
+            }
+        }
+    }
 }
