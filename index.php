@@ -6,6 +6,9 @@ require "controller/homecontroller.php";
 require "controller/productsController.php";
 require "controller/cartController.php";
 require "controller/categoryController.php";
+require "controller/orderController.php";
+require "model/order.php";
+require "model/orderQuery.php";
 require "model/accountQuery.php";
 require "model/account.php";
 require "model/products.php";
@@ -38,6 +41,7 @@ match ($act) {
   "chiTietNew" => (new homecontroller())->chiTietNews($id),
   "gioHang" => (new cartController())->cart($id),
   "deleteCartItem" => (new cartController())->deleteItem($user_id, $id),
+  "thanhToan" => (new OrderController())->thanhToan($id),
   default => (new homecontroller())->error(),
 }
   ?>

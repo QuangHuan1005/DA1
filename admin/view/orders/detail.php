@@ -56,8 +56,8 @@
                                 match ($oneOrder->paymen_method) {
                                     'cash_on_delivery' => "Thanh toán khi nhận hàng",
                                     'credit_card' => "Thẻ tín dụng",
-                                    'paypal' => "PayPal",
-                                    'zalopay' => "ZaloPay",
+                                    'vnpay' => "VNPay",
+                                    'momo' => "MoMo",
                                     'bank_transfer' => "Chuyển khoản ngân hàng",
                                     default => "Lỗi"
                                 } ?>" class="my-2 form-control" disabled="">
@@ -72,8 +72,7 @@
                         <div class="form-group shadow-sm p-3 mb-5 bg-white rounded">
                             <?php
                             foreach ($oneOrder->order_items as $key):
-                                $tong += $key['total'];
-                                ?>
+                                $tong += $key['total'] * $key['quantity']; ?>
                                 <div>
                                     <div class="row align-items-center">
                                         <img class="col-auto" src="../<?= $key['imageProduct'] ?>" alt=""

@@ -19,7 +19,7 @@ class ProductsController
         }
         $all = $this->productsController->all();
         include 'view/products/list.php';
-        
+
     }
     public function error()
     {
@@ -43,9 +43,9 @@ class ProductsController
                 $loi = '<div class="alert alert-danger" role="alert">Vui lòng nhập đầy đủ thông tin!</div>';
             }
             if (isset($_FILES["file_image"]) && $_FILES["file_image"]["tmp_name"] !== "") {
-                $vi_tri_luu = "../upload/" . $_FILES["file_image"]["name"];
+                $vi_tri_luu = "upload/" . $_FILES["file_image"]["name"];
                 if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $vi_tri_luu)) {
-                    $product->image = "../upload/" . $_FILES['file_image']['name'];
+                    $product->image = "upload/" . $_FILES['file_image']['name'];
                 }
             }
             if ($loi === "") {
@@ -87,7 +87,7 @@ class ProductsController
                 if (isset($_FILES["file_image"]) && $_FILES["file_image"]["tmp_name"] !== "") {
                     $vi_tri_luu = "../upload/" . $_FILES["file_image"]["name"];
                     if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $vi_tri_luu)) {
-                        $all->image = "../upload/" . $_FILES['file_image']['name'];
+                        $all->image = "upload/" . $_FILES['file_image']['name'];
                     }
                 }
                 if ($loi === "") {

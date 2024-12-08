@@ -226,6 +226,8 @@
             color: white;
             border: none;
             margin-bottom: 20px;
+            cursor: pointer;
+
         }
 
         .remove-item {
@@ -405,8 +407,8 @@ include 'components/header.php';
                     }
                     ?>
                 </div>
-                <div class="formInfo">
-                    <form>
+                <form method="POST">
+                    <div class="formInfo">
                         <h4>Thông tin khách hàng</h4>
                         <div class="sex-customer">
                             <input type="radio" id="men" name="fav_language" value="men" checked="" class="has-value">
@@ -417,83 +419,103 @@ include 'components/header.php';
                         </div>
                         <div style="width:100%;">
                             <div class=" col-left">
-                                <input type="text" class="inputs" id="name">
+                                <input type="text" class="inputs" id="name" name="nameUser" value="<?= $info->NameUser ?>"
+                                    disabled>
                                 <label class="form-lable" for="name">Họ và tên</label>
                             </div>
                             <div class=" col-right">
-                                <input type="text" class="inputs" id="number">
+                                <input type="text" class="inputs" id="number" name="numberPhone" required>
                                 <label class="form-lable" for="number">Số điện thoại</label>
                             </div>
                         </div>
-                    </form>
-                </div>
-                <div class="formInfo1">
-                    <h4>Hình thức nhận hàng</h4>
-                    <div class="sex-customer">
-                        <div style="margin-right:20px">
-                            <input type="radio" id="pickup" name="delivery_method" checked
-                                onclick="toggleDeliveryOptions()">
-                            <label for="pickup">Nhận tại cửa hàng</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="delivery" name="delivery_method" onclick="toggleDeliveryOptions()">
-                            <label for="delivery">Giao tận nơi</label>
-                        </div>
                     </div>
-                    <div id="districtSelection" class="store">
-                        <div>
-                            <div class="col-left1" style="padding: 10px 10px 0px;">
-                                <select id="province" class="inputs1" onchange="updateDistricts()">
-                                    <option value="">Chọn tỉnh</option>
-                                    <option value="HaNoi">Hà Nội</option>
-                                    <option value="HCM">Hồ Chí Minh</option>
-                                    <option value="Danang">Đà Nẵng</option>
-                                    <option value="Hue">Huế</option>
-                                </select>
+                    <div class="formInfo1">
+                        <h4>Hình thức nhận hàng</h4>
+                        <div class="sex-customer" style="margin-top:10px">
+                            <div style="margin-right:20px">
+                                <input type="radio" id="pickup" name="delivery_method" value="COD" checked
+                                    onclick="toggleDeliveryOptions()">
+                                <label for="pickup">Nhận tại cửa hàng</label>
                             </div>
-                            <div class="col-right1" style="padding: 10px 10px 0px;margin-bottom: 10px;">
-                                <select id="district" class="inputs1">
-                                    <option value="">Chọn quận/huyện</option>
-                                </select>
+                            <div>
+                                <input type="radio" id="delivery" name="delivery_method" onclick="toggleDeliveryOptions()">
+                                <label for="delivery">Giao tận nơi</label>
                             </div>
                         </div>
-                        <input type="text" id="specificAddress" class="inputs1" style="width: 97%;margin: 8px;">
-                        <label for="specificAddress" class="form-lable">Địa chỉ cụ thể</label>
-                    </div>
-
-                </div>
-                <div style="    padding: 10px 30px;">
-                    <div class="totals">
-                        <div class="total-info">
-                            <table class="cart-total">
-                                <tbody>
-                                    <tr class="order-total">
-                                        <td class="cart-total-left">Tổng tiền:</td>
-                                        <td class="cart-total-right">
-                                            <span class="value-summary">
-                                                <?= number_format($total, 0, ',', '.') ?>₫
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div id="districtSelection" class="store">
+                            <div>
+                                <div class="col-left1" style="padding: 10px 10px 0px;">
+                                    <select id="province" class="inputs1" onchange="updateDistricts()">
+                                        <option value="">Chọn tỉnh</option>
+                                        <option value="HaNoi">Hà Nội</option>
+                                        <option value="HCM">Hồ Chí Minh</option>
+                                        <option value="Danang">Đà Nẵng</option>
+                                        <option value="Hue">Huế</option>
+                                    </select>
+                                </div>
+                                <div class="col-right1" style="padding: 10px 10px 0px;margin-bottom: 10px;">
+                                    <select id="district" class="inputs1">
+                                        <option value="">Chọn quận/huyện</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <input type="text" id="specificAddress" class="inputs1" name="address"
+                                style="width: 97%;margin: 8px;">
+                            <label for="specificAddress" class="form-lable">Địa chỉ cụ thể</label>
                         </div>
-                        <div class="terms-of-service" style="text-align: left;">
-                            <div class="d-flex">
-                                <div><input id="termsofservice" type="checkbox" name="termsofservice" checked=""
-                                        class="has-value"></div>
-                                <label style="cursor: pointer;margin-bottom:0;" for="termsofservice"><span
-                                        class="rule-web">Tôi đã đọc và đồng ý với</span>
-                                    <a href="/dieu-khoan-dieu-kien" class="read">điều khoản và điều kiện</a>
-                                    điều khoản và điều kiện
-                                    <span class="rule-web">của website</span></label>
+                    </div>
+                    <div class="payment formInfo1">
+                        <h4>Hình thức thanh toán</h4>
+                        <div class="sex-customer" style="margin-top:10px">
+                            <div style="margin-right:20px">
+                                <input type="radio" id="COD" name="payment" value="cash_on_delivery" checked>
+                                <label for="COD">Thanh toán khi nhận hàng</label>
+                            </div>
+                            <div style="margin-right:20px">
+                                <input type="radio" id="MoMo" name="payment" value="momo">
+                                <label for="MoMo">Thanh toán MoMo</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="vnpay" name="payment" value="vnpay">
+                                <label for="vnpay">Thanh toán VNPay</label>
                             </div>
                         </div>
-                        <div class="checkout-buttons">
-                            <button type="submit" class="btn-primary">Tiến hành đặt hàng</button>
+                    </div>
+                    <div style="padding: 10px 30px;">
+                        <div class="totals">
+                            <div class="total-info">
+                                <table class="cart-total">
+                                    <tbody>
+                                        <tr class="order-total">
+                                            <td class="cart-total-left">Tổng tiền:</td>
+                                            <td class="cart-total-right">
+                                                <span class="value-summary">
+                                                    <?= number_format($total + 10000, 0, ',', '.') ?>₫
+                                                    <input type="text" value="<?= $total + 10000 ?>" hidden name="total">
+                                                    <input type="text" value="<?= $info->user_id ?>" name="user_id" hidden>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="terms-of-service" style="text-align: left;">
+                                <div class="d-flex">
+                                    <div><input required id="termsofservice" type="checkbox" name="termsofservice"
+                                            checked="" class="has-value"></div>
+                                    <label style="cursor: pointer;margin-bottom:0;" for="termsofservice"><span
+                                            class="rule-web">Tôi đã đọc và đồng ý với</span>
+                                        <a href="/dieu-khoan-dieu-kien" class="read">điều khoản và điều kiện</a>
+                                        điều khoản và điều kiện
+                                        <span class="rule-web">của website</span></label>
+                                </div>
+                            </div>
+                            <div class="checkout-buttons">
+                                <button type="submit" name="order" class="btn-primary">Tiến hành đặt hàng</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <?php

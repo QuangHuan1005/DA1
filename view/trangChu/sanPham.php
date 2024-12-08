@@ -290,7 +290,7 @@
                                         <img src="<?= $key->image ?>" width="240px" height="240px" alt="">
                                     </a>
                                     <div class="product_name"><?= $key->product_name ?></div>
-                                    <div class="product_price"><?= $key->price ?></div>
+                                    <div class="product_price"><?= number_format($key->price) . "₫" ?></div>
                                 </div>
                             </div>
                         <?php } ?>

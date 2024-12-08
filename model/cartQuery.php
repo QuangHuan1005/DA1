@@ -80,6 +80,7 @@ class CartQuery
                 $cart->NameUser = $data[0]['NameUser'];
                 $cart->cart_id = $data[0]['cart_id'];
                 $cart->cart_items_id = $data[0]['cart_items_id'];
+                $cart->user_id = $data[0]['Users_id'];
                 $cart->infoPro = [];
                 foreach ($data as $key) {
                     $cart->infoPro[] = [
