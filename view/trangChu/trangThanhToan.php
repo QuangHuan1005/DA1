@@ -458,24 +458,27 @@ include 'components/header.php';
                 }
                 ?>
             </div>
-            <div class="info">
-                <div class="cl-wrap-qr">
-                    <div class="cl-wrap-payment-info">
-                        <div class="cl-payment-info">
-                            <p>Số tài khoản: 99MM24740M80121814</p>
-                            <p>Ngân hàng: BVBank</p>
-                            <p>Chủ tài khoản: PHAM DINH DUNG</p>
+            <?php if ($info->shipping_address !== "COD") { ?>
+                <div class="info">
+                    <div class="cl-wrap-qr">
+                        <div class="cl-wrap-payment-info">
+                            <div class="cl-payment-info">
+                                <p>Số tài khoản: 99MM24740M80121814</p>
+                                <p>Ngân hàng: BVBank</p>
+                                <p>Chủ tài khoản: PHAM DINH DUNG</p>
+                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <img src="upload/checkout.jpg" style="width:125.7px">
                         </div>
                     </div>
-                    <div style="text-align: center;">
-                        <img src="upload/checkout.jpg" style="width:125.7px">
-                    </div>
+                    <span style="justify-content: center; display:flex;" class="note-qr">Dùng ứng dụng ngân hàng quét mã QR
+                        để
+                        chuyển
+                        khoản</span>
                 </div>
-                <span style="justify-content: center; display:flex;" class="note-qr">Dùng ứng dụng ngân hàng quét mã QR
-                    để
-                    chuyển
-                    khoản</span>
-            </div>
+            <?php
+            } ?>
             <div class="checkout-data" style="margin-bottom: 23px;padding: 0px 30px 17px 30px;">
                 <div class="section order-completed">
                     <div class="note">Khi cần hỗ trợ vui lòng gọi

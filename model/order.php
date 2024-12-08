@@ -13,4 +13,6 @@ class Order
     public $numberPhone;
     public $shipping_fee;
     public $NameUser;
+    public $confirmed_at;
+    public $order_items;
 }

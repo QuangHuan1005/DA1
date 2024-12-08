@@ -52,6 +52,7 @@ class homecontroller
                     $_SESSION['email'] = $res->email;
                     $_SESSION['role'] = $res->role;
                     $_SESSION['image'] = $res->image;
+                    $_SESSION['name'] = $res->NameUser;
                     if ($res->role === 'admin') {
                         header("Location:admin");
                     } else {
@@ -128,6 +129,10 @@ class homecontroller
 
             include 'view/trangChu/chiTietNews.php';
         }
+    }
+    public function account()
+    {
+        include 'view/trangChu/dashboard.php';
     }
 }
 ?>

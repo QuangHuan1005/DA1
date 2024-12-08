@@ -12,8 +12,7 @@
         <a href="#"><i class="fas fa-search icon"></i></a>
         <?php
         if (isset($_SESSION['username'])) { ?>
-            <a href="?act=logout"><i class="fas fa-user icon"
-                    onclick="return confirm('Bạn có muốn đăng xuất không?')"></i></a>
+            <a href="?act=account"><i class="fas fa-user icon"></i></a>
             <?php
         }
         if (!isset($_SESSION['username'])) { ?>

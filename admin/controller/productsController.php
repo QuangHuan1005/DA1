@@ -43,7 +43,7 @@ class ProductsController
                 $loi = '<div class="alert alert-danger" role="alert">Vui lòng nhập đầy đủ thông tin!</div>';
             }
             if (isset($_FILES["file_image"]) && $_FILES["file_image"]["tmp_name"] !== "") {
-                $vi_tri_luu = "upload/" . $_FILES["file_image"]["name"];
+                $vi_tri_luu = "../upload/" . $_FILES["file_image"]["name"];
                 if (move_uploaded_file($_FILES["file_image"]["tmp_name"], $vi_tri_luu)) {
                     $product->image = "upload/" . $_FILES['file_image']['name'];
                 }
@@ -66,6 +66,8 @@ class ProductsController
             $data = $this->productsController->deleteProduct($id);
             if ($data === "ok") {
                 header('Location:?act=list-pro');
+            } else {
+                echo "Xóa thất bại";
             }
         }
     }

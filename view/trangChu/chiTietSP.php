@@ -535,6 +535,51 @@
         .show h3:hover {
             text-decoration: underline;
         }
+
+        .quantity-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-decrease,
+        .btn-increase {
+            width: 30px;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ccc;
+            background-color: #f0f0f0;
+            color: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-decrease:hover,
+        .btn-increase:hover {
+            background-color: #e0e0e0;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .quantity-input::-webkit-inner-spin-button,
+        .quantity-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .quantity-input {
+            -moz-appearance: textfield;
+        }
     </style>
 </head>
 
@@ -555,8 +600,9 @@
 
                     <h1><?= $sp->product_name ?></h1>
                     <h2><?= number_format($sp->price) . "₫" ?></h2>
-                    <span>(Đã bao gồm VAT)</span>
+                    <span>(Đã bao gồm VAT)</span> <br>
                     <!-- tang san pham them vao gio hang -->
+                    <span>Số lượng:</span><br>
                     <button class="btn-decrease">-</button>
                     <input type="number" class="quantity-input" value="1" min="1" />
                     <button class="btn-increase">+</button>
@@ -644,7 +690,7 @@
                     <!-- button -->
                     <form method="POST">
                         <div class="nut">
-                            <input id="quantity-value" name="quantity" value="1"></input>
+                            <input id="quantity-value" name="quantity" value="1" hidden></input>
                             <button type="submit" name="cart" style="color:white">Mua ngay</button>
                             <?= $loiadd ?>
                             <div class="nut2">
@@ -667,7 +713,8 @@
                             <a href="?act=chiTiet&id=<?= $key->product_id ?>"><img src="<?= $key->image ?>" width="240px"
                                     height="240px" alt=""></a>
                             <div class="product_name"><?= $key->product_name ?></div>
-                            <div class="product_price"><?= $key->price ?></div>
+                            <div class="product_price"><?= number_format($key->price) . "₫
+" ?> </div>
                         </div>
                     <?php }
                 } ?>

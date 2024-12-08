@@ -42,6 +42,9 @@ match ($act) {
   "gioHang" => (new cartController())->cart($id),
   "deleteCartItem" => (new cartController())->deleteItem($user_id, $id),
   "thanhToan" => (new OrderController())->thanhToan($id),
+  "account" => (new homecontroller())->account(),
+  "list_order" => (new OrderController())->listOrder($id),
+  "detail_order" => (new OrderController())->detailOrder($id),
   default => (new homecontroller())->error(),
 }
   ?>

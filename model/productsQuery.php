@@ -13,7 +13,7 @@ class ProductsQuery
     public function top4Pro()
     {
         try {
-            $sql = "SELECT * FROM product ORDER BY create_at DESC LIMIT 4";
+            $sql = "SELECT * FROM product WHERE delete_at IS NULL ORDER BY create_at DESC  LIMIT 4";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {
@@ -38,7 +38,7 @@ class ProductsQuery
     public function productRCM(Products $products)
     {
         try {
-            $sql = "SELECT * FROM `product` WHERE `product_id` != $products->product_id AND `storage_capacity` LIKE '$products->storage_capacity' LIMIT 4";
+            $sql = "SELECT * FROM `product` WHERE `product_id` != $products->product_id AND `storage_capacity` = '$products->storage_capacity' AND delete_at IS NULL LIMIT 4";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {
@@ -62,7 +62,7 @@ class ProductsQuery
     public function all()
     {
         try {
-            $sql = "SELECT * FROM Product";
+            $sql = "SELECT * FROM Product WHERE delete_at IS NULL";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {

@@ -42,7 +42,7 @@
                                     <th scope="row"><?= $key->product_id ?></th>
                                     <td><?= $key->product_name ?></td>
                                     <td>
-                                        <?= $key->price ?>
+                                        <?= number_format($key->price) . "₫" ?>
                                     </td>
                                     <td class="text-center"><img src="../<?= $key->image ?>" style="height:60px;">
                                     </td>

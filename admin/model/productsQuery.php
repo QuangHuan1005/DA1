@@ -13,7 +13,7 @@ class ProductsQuery
     public function all()
     {
         try {
-            $sql = "SELECT * FROM Product";
+            $sql = "SELECT * FROM Product WHERE delete_at IS NULL";
             // xóa danh mục thì sẽ ẩn sản phẩm của danh mục đó
             // $sql = "SELECT * FROM product JOIN category ON product.category_id = category.category_id WHERE category.deleted_at IS NULL;";
             $data = $this->pdo->query($sql)->fetchAll();
@@ -52,12 +52,11 @@ class ProductsQuery
     public function deleteProduct($id)
     {
         try {
-            $sql = "DELETE FROM product WHERE `product`.`product_id` = $id";
+            $sql = "UPDATE `product` SET `create_at` = NOW(), `delete_at` = NOW() WHERE `product`.`product_id` = $id;";
             $data = $this->pdo->exec($sql);
             if ($data === 1) {
                 return "ok";
             }
-            return $data;
         } catch (Exception $th) {
             echo "Error: " . $th->getMessage();
         }
