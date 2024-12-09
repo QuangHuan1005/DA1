@@ -217,61 +217,69 @@
             </div>
             <div class="col-md-9">
                 <div id="content" class="card">
-                    <div class="card-body">
-                        <div class='container mt-5'>
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <!-- Main Content -->
+                    <?php
+                    if (isset($all) && !empty($all)) { ?>
+                        <div class="card-body">
+                            <div class='container mt-5'>
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <!-- Main Content -->
 
-                                    <main class=" ms-sm-auto col-lg-10 px-md-4 bg-body-tertiary vh-100">
-                                        <!-- Dashboard Section -->
-                                        <div id="dashboard" class="section shadow-sm p-3 mb-5 bg-white rounded mt-5">
-                                            <table class="table table-hover table-bordered">
-                                                <thead class="table-warning">
-                                                    <tr>
-                                                        <th scope="col">Mã đơn hàng</th>
-                                                        <th scope="col">Tên khách hàng</th>
-                                                        <th scope="col">Tổng tiền</th>
-                                                        <th scope="col">Trạng thái</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    // print_r($all);
-                                                    foreach ($all as $key): ?>
-
+                                        <main class=" ms-sm-auto col-lg-10 px-md-4 bg-body-tertiary vh-100">
+                                            <!-- Dashboard Section -->
+                                            <div id="dashboard" class="section shadow-sm p-3 mb-5 bg-white rounded mt-5">
+                                                <table class="table table-hover table-bordered">
+                                                    <thead class="table-warning">
                                                         <tr>
-                                                            <th scope="row"><a
-                                                                    href="?act=detail_order&id=<?= $key->order_id ?>"><?= $key->order_id ?></a>
-                                                            </th>
-                                                            <td><a
-                                                                    href="?act=detail_order&id=<?= $key->order_id ?>"><?= $key->nameUser ?></a>
-                                                            </td>
-                                                            <td>
-                                                                <a
-                                                                    href="?act=detail_order&id=<?= $key->order_id ?>"><?= number_format($key->totalOrder) . "₫" ?></a>
-                                                            </td>
-                                                            <td>
-                                                                <?php
-                                                                echo match ($key->status) {
-                                                                    'pending' => '<span class="badge text-bg-danger" >Chờ xử lý</span>',
-                                                                    'shipped' => '<span class="badge text-bg-warning" >Đã vận chuyển</span>',
-                                                                    'confirmed' => '<span class="badge text-bg-warning" >Đã xác nhận</span>',
-                                                                    'delivered' => '<span class="badge text-bg-success" >Đã hoàn thành</span>',
-                                                                    default => '<span class="badge text-bg-dark" >Đã hủy</span>'
-                                                                };
-                                                                ?>
-                                                            </td>
+                                                            <th scope="col">Mã đơn hàng</th>
+                                                            <th scope="col">Tên khách hàng</th>
+                                                            <th scope="col">Tổng tiền</th>
+                                                            <th scope="col">Trạng thái</th>
                                                         </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </main>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                        // print_r($all);
+                                                        foreach ($all as $key): ?>
+
+                                                            <tr>
+                                                                <th scope="row"><a
+                                                                        href="?act=detail_order&id=<?= $key->order_id ?>"><?= $key->order_id ?></a>
+                                                                </th>
+                                                                <td><a
+                                                                        href="?act=detail_order&id=<?= $key->order_id ?>"><?= $key->nameUser ?></a>
+                                                                </td>
+                                                                <td>
+                                                                    <a
+                                                                        href="?act=detail_order&id=<?= $key->order_id ?>"><?= number_format($key->totalOrder) . "₫" ?></a>
+                                                                </td>
+                                                                <td>
+                                                                    <?php
+                                                                    echo match ($key->status) {
+                                                                        'pending' => '<span class="badge text-bg-danger" >Chờ xử lý</span>',
+                                                                        'shipped' => '<span class="badge text-bg-warning" >Đã vận chuyển</span>',
+                                                                        'confirmed' => '<span class="badge text-bg-warning" >Đã xác nhận</span>',
+                                                                        'delivered' => '<span class="badge text-bg-success" >Đã hoàn thành</span>',
+                                                                        default => '<span class="badge text-bg-dark" >Đã hủy</span>'
+                                                                    };
+                                                                    ?>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </main>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        <?php
+                    } else { ?>
+                        <p>Bạn chưa có đơn hàng nào</p>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>

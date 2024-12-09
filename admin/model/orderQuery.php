@@ -30,8 +30,9 @@ class orderQuery
                     JOIN 
                         users 
                     ON 
-                        orders.user_id = users.Users_id;
-                    ";
+                        orders.user_id = users.Users_id
+                    ORDER BY 
+                        orders.orders_id DESC";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {

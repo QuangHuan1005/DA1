@@ -149,7 +149,9 @@ class OrderQuery
                         users 
                     ON 
                         orders.user_id = users.Users_id
-                    WHERE user_id = $id";
+                    WHERE user_id = $id
+                    ORDER BY 
+                        orders.orders_date DESC";
             $data = $this->pdo->query($sql)->fetchAll();
             $danhsach = [];
             foreach ($data as $row) {
