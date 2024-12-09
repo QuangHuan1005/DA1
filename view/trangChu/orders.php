@@ -203,8 +203,9 @@
                             tin tài khoản</a>
                     </div>
                     <div class="infoOrder">
-                        <a href="?act=list_order" class="list-group-item list-group-item-action"><i
-                                style="margin-right:14px; font-size:20px" class="fa-solid fa-clipboard-list"></i>Hàng đã
+                        <a href="?act=list_order&id=<?= $_SESSION['Users_id'] ?>"
+                            class="list-group-item list-group-item-action"><i style="margin-right:14px; font-size:20px"
+                                class="fa-solid fa-clipboard-list"></i>Hàng đã
                             đặt</a>
                     </div>
                     <div class="infoOrder1">
